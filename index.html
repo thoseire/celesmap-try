@@ -108,13 +108,16 @@ body::before {
 
 
 /* =====================================================
-   HEADER
+   HEADER — REFINED
 ===================================================== */
 
 header {
 
     text-align:
         center;
+
+    padding:
+        8px 0 0;
 }
 
 .kicker {
@@ -133,38 +136,41 @@ header {
         uppercase;
 
     opacity:
-        0.5;
+        0.45;
 }
 
 h1 {
 
     margin:
-        9px 0 4px;
+        10px 0 5px;
 
     font-size:
         clamp(
-            30px,
-            4vw,
-            52px
+            32px,
+            5vw,
+            58px
         );
 
     font-weight:
         normal;
 
     letter-spacing:
-        7px;
+        8px;
+
+    line-height:
+        1.1;
 }
 
 .subtitle {
 
     font-size:
-        13px;
+        14px;
 
     font-style:
         italic;
 
     opacity:
-        0.55;
+        0.6;
 }
 
 
@@ -184,19 +190,23 @@ h1 {
         center;
 
     gap:
-        16px;
+        18px;
 
     margin:
-        22px auto 10px;
+        28px auto
+        12px;
 }
 
 .nav-button {
 
     width:
-        34px;
+        36px;
 
     height:
-        34px;
+        36px;
+
+    flex-shrink:
+        0;
 
     border-radius:
         50%;
@@ -207,7 +217,7 @@ h1 {
             255,
             255,
             255,
-            0.18
+            0.2
         );
 
     background:
@@ -226,6 +236,13 @@ h1 {
 
     font-size:
         19px;
+
+    transition:
+        background
+        0.2s ease,
+
+        transform
+        0.2s ease;
 }
 
 .nav-button:hover {
@@ -235,7 +252,12 @@ h1 {
             255,
             255,
             255,
-            0.1
+            0.12
+        );
+
+    transform:
+        scale(
+            1.05
         );
 }
 
@@ -254,7 +276,7 @@ h1 {
         block;
 
     font-size:
-        18px;
+        19px;
 
     font-weight:
         normal;
@@ -269,7 +291,7 @@ h1 {
         block;
 
     margin-top:
-        4px;
+        5px;
 
     font-family:
         Arial,
@@ -279,7 +301,7 @@ h1 {
         9px;
 
     letter-spacing:
-        2.5px;
+        3px;
 
     opacity:
         0.4;
@@ -301,17 +323,21 @@ h1 {
     justify-content:
         center;
 
+    align-items:
+        center;
+
     gap:
-        7px;
+        4px;
 
     margin:
-        15px auto 12px;
+        0 auto
+        24px;
 
-    flex-wrap:
-        wrap;
-}
+    width:
+        fit-content;
 
-.month-tab {
+    padding:
+        4px;
 
     border:
         1px solid
@@ -319,8 +345,11 @@ h1 {
             255,
             255,
             255,
-            0.09
+            0.07
         );
+
+    border-radius:
+        30px;
 
     background:
         rgba(
@@ -329,17 +358,23 @@ h1 {
             255,
             0.025
         );
+}
+
+.month-tab {
+
+    border:
+        none;
+
+    background:
+        transparent;
 
     color:
         rgba(
             255,
             255,
             255,
-            0.45
+            0.4
         );
-
-    padding:
-        7px 13px;
 
     font-family:
         Arial,
@@ -351,47 +386,46 @@ h1 {
     letter-spacing:
         2px;
 
-    text-transform:
-        uppercase;
+    padding:
+        8px 14px;
+
+    border-radius:
+        20px;
 
     cursor:
         pointer;
 
     transition:
+        background
+        0.2s ease,
+
+        color
         0.2s ease;
 }
 
 .month-tab:hover {
 
-    background:
+    color:
         rgba(
             255,
             255,
             255,
-            0.07
+            0.8
         );
 }
 
 .month-tab.active {
 
-    color:
-        white;
-
     background:
         rgba(
             255,
             255,
             255,
-            0.09
+            0.1
         );
 
-    border-color:
-        rgba(
-            255,
-            255,
-            255,
-            0.25
-        );
+    color:
+        white;
 }
 
 
@@ -1246,9 +1280,76 @@ svg {
      MONTH TABS
 ===================================================== -->
 
+```html
 <div
     class="month-tabs"
     id="month-tabs">
+</div>
+
+    /* =====================================================
+   MONTH DISPLAY
+===================================================== */
+
+.month-display {
+
+    text-align:
+        center;
+
+    margin-bottom:
+        12px;
+}
+
+.month-display h2 {
+
+    margin:
+        0;
+
+    font-size:
+        25px;
+
+    font-weight:
+        normal;
+
+    letter-spacing:
+        6px;
+}
+
+.month-display p {
+
+    margin:
+        5px 0 0;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        3px;
+
+    opacity:
+        0.35;
+
+    text-transform:
+        uppercase;
+}
+
+<!-- =====================================================
+     MONTH DISPLAY
+===================================================== -->
+
+<div class="month-display">
+
+    <h2 id="current-month">
+        JUNE
+    </h2>
+
+    <p id="constellation-name">
+        Summer Sky · Northern Hemisphere
+    </p>
+
 </div>
 
 
@@ -3234,6 +3335,52 @@ function renderMonthTabs() {
 ===================================================== */
 
 function updateMonthTitle() {
+
+    const monthDisplay =
+        document.getElementById(
+            "current-month"
+        );
+
+    const constellationDisplay =
+        document.getElementById(
+            "constellation-name"
+        );
+
+
+    monthDisplay.textContent =
+        currentMonth.toUpperCase();
+
+
+    const constellationNames = {
+
+        June:
+            "Summer Sky · Northern Hemisphere",
+
+        July:
+            "Summer Sky · Northern Hemisphere",
+
+        August:
+            "Late Summer Sky · Northern Hemisphere",
+
+        September:
+            "Early Autumn Sky · Northern Hemisphere",
+
+        October:
+            "Autumn Sky · Northern Hemisphere",
+
+        November:
+            "Late Autumn Sky · Northern Hemisphere"
+
+    };
+
+
+    constellationDisplay.textContent =
+        constellationNames[
+            currentMonth
+        ] || "Celestial Sky";
+
+
+    /* Tetap update tulisan kecil di pojok map */
 
     if (
         currentMonth ===
