@@ -1205,6 +1205,27 @@ svg {
 
 }
 
+    .month-display {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.month-display h2 {
+    margin: 0;
+    font-size: 25px;
+    font-weight: normal;
+    letter-spacing: 6px;
+}
+
+.month-display p {
+    margin: 5px 0 0;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    opacity: 0.35;
+    text-transform: uppercase;
+}
+
 </style>
 
 </head>
@@ -1280,61 +1301,35 @@ svg {
      MONTH TABS
 ===================================================== -->
 
-```html
 <div
     class="month-tabs"
     id="month-tabs">
 </div>
 
-    /* =====================================================
-   MONTH DISPLAY
-===================================================== */
 
-.month-display {
+<div class="month-display">
 
-    text-align:
-        center;
+    <h2 id="current-month">
+        JUNE
+    </h2>
 
-    margin-bottom:
-        12px;
-}
+    <p id="constellation-name">
+        Summer Sky · Northern Hemisphere
+    </p>
 
-.month-display h2 {
+</div>
 
-    margin:
-        0;
 
-    font-size:
-        25px;
+<div class="map-container">
 
-    font-weight:
-        normal;
+    <div class="map">
 
-    letter-spacing:
-        6px;
-}
+        ...
+        
+    </div>
 
-.month-display p {
+</div>
 
-    margin:
-        5px 0 0;
-
-    font-family:
-        Arial,
-        sans-serif;
-
-    font-size:
-        8px;
-
-    letter-spacing:
-        3px;
-
-    opacity:
-        0.35;
-
-    text-transform:
-        uppercase;
-}
 
 <!-- =====================================================
      MONTH DISPLAY
