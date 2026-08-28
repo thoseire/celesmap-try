@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -6,14 +7,14 @@
 <meta charset="UTF-8">
 
 <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+
 >
 
 <title>
     The Celestial Archive
 </title>
-
 
 <style>
 
@@ -49,9 +50,7 @@ body {
 }
 
 
-/* =====================================================
-   BACKGROUND
-===================================================== */
+/* Background stars */
 
 body::before {
 
@@ -455,9 +454,7 @@ h1 {
 }
 
 
-/* =====================================================
-   DECORATIVE ORBITAL RINGS
-===================================================== */
+/* Decorative orbital rings */
 
 .map::before {
 
@@ -538,9 +535,7 @@ h1 {
 }
 
 
-/* =====================================================
-   MONTH TITLE
-===================================================== */
+/* Month title */
 
 .map-month-title {
 
@@ -663,6 +658,12 @@ svg {
     cursor:
         pointer;
 
+    /*
+       IMPORTANT:
+       No transform animation here.
+       This prevents the previous vibrating problem.
+    */
+
     transition:
         filter
         0.15s
@@ -683,9 +684,7 @@ svg {
 }
 
 
-/* =====================================================
-   STAR LABEL
-===================================================== */
+/* Label only appears on hover */
 
 .star-label {
 
@@ -971,9 +970,7 @@ svg {
 }
 
 
-/* =====================================================
-   PROFILE
-===================================================== */
+/* Profile */
 
 .profile {
 
@@ -1020,9 +1017,7 @@ svg {
 }
 
 
-/* =====================================================
-   PORTRAIT
-===================================================== */
+/* Portrait */
 
 .portrait {
 
@@ -1075,9 +1070,6 @@ svg {
         );
 }
 
-
-/* FOTO RANK 1–3 */
-
 .portrait img {
 
     width:
@@ -1093,80 +1085,22 @@ svg {
         none;
 }
 
-.portrait.has-image img {
+.portrait.has-image
+img {
 
     display:
         block;
 }
 
-.portrait.has-image .portrait-placeholder {
+.portrait.has-image
+.portrait-placeholder {
 
     display:
         none;
 }
 
 
-/* =====================================================
-   RANK 0 — NO PHOTO
-===================================================== */
-
-/*
-   Rank 0 menggunakan kelas no-photo.
-   Foto dipaksa hilang dengan !important
-   supaya foto sebelumnya tidak pernah ikut muncul.
-*/
-
-.portrait.no-photo {
-
-    background:
-
-        radial-gradient(
-            circle at center,
-            rgba(
-                120,
-                110,
-                190,
-                0.10
-            ),
-            transparent 65%
-        ),
-
-        #101321;
-}
-
-
-.portrait.no-photo img {
-
-    display:
-        none !important;
-}
-
-
-.portrait.no-photo .portrait-placeholder {
-
-    display:
-        flex !important;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    width:
-        100%;
-
-    height:
-        100%;
-
-    opacity:
-        0.35;
-}
-
-
-/* =====================================================
-   PROFILE CONTENT
-===================================================== */
+/* Profile content */
 
 .profile-content {
 
@@ -1330,275 +1264,262 @@ svg {
 
 </head>
 
-
 <body>
-
 
 <div class="archive">
 
-
-<!-- =====================================================
+<!-- =================================================
      HEADER
-===================================================== -->
+================================================== -->
 
 <header>
 
-    <div class="kicker">
-        Astronomical Student Archive
-    </div>
+```
+<div class="kicker">
+    Astronomical Student Archive
+</div>
 
-    <h1>
-        THE CELESTIAL ARCHIVE
-    </h1>
+<h1>
+    THE CELESTIAL ARCHIVE
+</h1>
 
-    <div class="subtitle">
-        A record of stars that crossed the classroom sky.
-    </div>
+<div class="subtitle">
+    A record of stars that crossed the classroom sky.
+</div>
+```
 
 </header>
 
-
-<!-- =====================================================
+<!-- =================================================
      CYCLE
-===================================================== -->
+================================================== -->
 
 <div class="cycle-navigation">
 
-    <button
-        class="nav-button"
-        id="previous">
-
-        ‹
-
-    </button>
-
-
-    <div class="cycle-title">
-
-        <strong id="cycle-name">
-            CELESTIAL CYCLE I
-        </strong>
-
-        <span id="cycle-date">
-            June — November 2026
-        </span>
-
-    </div>
+```
+<button
+    class="nav-button"
+    id="previous">
+    ‹
+</button>
 
 
-    <button
-        class="nav-button"
-        id="next">
+<div class="cycle-title">
 
-        ›
+    <strong id="cycle-name">
+        CELESTIAL CYCLE I
+    </strong>
 
-    </button>
+    <span id="cycle-date">
+        June — November 2026
+    </span>
 
 </div>
 
 
-<!-- =====================================================
+<button
+    class="nav-button"
+    id="next">
+    ›
+</button>
+```
+
+</div>
+
+<!-- =================================================
      MONTH TABS
-===================================================== -->
+================================================== -->
 
 <div
     class="month-tabs"
     id="month-tabs">
 </div>
 
-
-<!-- =====================================================
+<!-- =================================================
      MAP
-===================================================== -->
+================================================== -->
 
 <div class="map-container">
 
-    <div class="map">
+```
+<div class="map">
 
-        <div
-            class="map-month-title"
-            id="map-month-title">
-
-            June · Ursa Minor
-
-        </div>
-
-
-        <svg
-            id="constellation"
-            viewBox="0 0 1000 562.5"
-            preserveAspectRatio="none">
-        </svg>
-
+    <div
+        class="map-month-title"
+        id="map-month-title">
+        June · Ursa Minor
     </div>
+
+
+    <svg
+        id="constellation"
+        viewBox="0 0 1000 562.5"
+        preserveAspectRatio="none">
+    </svg>
+
+</div>
+```
 
 </div>
 
-
-<!-- =====================================================
+<!-- =================================================
      EDITOR
-===================================================== -->
+================================================== -->
 
 <div
     class="editor-panel"
     id="editor-panel">
 
+```
+<div>
 
-    <div>
-
-        <div class="editor-status">
-
-            ✦ Constellation Editor
-
-        </div>
-
-        <div class="editor-hint">
-
-            Drag stars · Add Line: click two stars ·
-            Click a line to delete it
-
-        </div>
-
+    <div class="editor-status">
+        ✦ Constellation Editor
     </div>
 
-
-    <div class="editor-buttons">
-
-
-        <button
-            class="editor-button"
-            id="add-line">
-
-            ＋ ADD LINE
-
-        </button>
-
-
-        <button
-            class="editor-button"
-            id="reset-lines">
-
-            RESET LINES
-
-        </button>
-
-
-        <button
-            class="editor-button"
-            id="reset-editor">
-
-            RESET ALL
-
-        </button>
-
-
-        <button
-            class="editor-button"
-            id="copy-data">
-
-            COPY DATA
-
-        </button>
-
-
-        <button
-            class="editor-button"
-            id="exit-editor">
-
-            EXIT
-
-        </button>
-
-
+    <div class="editor-hint">
+        Drag stars · Add Line: click two stars · Click a line to delete it
     </div>
 
 </div>
 
 
+<div class="editor-buttons">
+
+    <button
+        class="editor-button"
+        id="add-line">
+
+        ＋ ADD LINE
+
+    </button>
+
+
+    <button
+        class="editor-button"
+        id="reset-lines">
+
+        RESET LINES
+
+    </button>
+
+
+    <button
+        class="editor-button"
+        id="reset-editor">
+
+        RESET ALL
+
+    </button>
+
+
+    <button
+        class="editor-button"
+        id="copy-data">
+
+        COPY DATA
+
+    </button>
+
+
+    <button
+        class="editor-button"
+        id="exit-editor">
+
+        EXIT
+
+    </button>
+
+</div>
+```
+
 </div>
 
+</div>
 
-<!-- =====================================================
+<!-- =================================================
      PROFILE MODAL
-===================================================== -->
+================================================== -->
 
 <div
     class="modal"
     id="modal">
 
+```
+<div class="profile">
 
-    <div class="profile">
+
+    <button
+        class="close"
+        id="close">
+
+        ×
+
+    </button>
 
 
-        <button
-            class="close"
-            id="close">
+    <div
+        class="portrait"
+        id="portrait">
 
-            ×
 
-        </button>
+        <img
+            id="portrait-image"
+            alt="Student portrait">
+
+
+        <span
+            class="portrait-placeholder">
+
+            STUDENT PORTRAIT
+
+        </span>
+
+
+    </div>
+
+
+    <div class="profile-content">
 
 
         <div
-            class="portrait"
-            id="portrait">
-
-
-            <img
-                id="portrait-image"
-                alt="Student portrait">
-
-
-            <span
-                class="portrait-placeholder">
-
-                STUDENT PORTRAIT
-
-            </span>
-
-
+            class="rank"
+            id="profile-rank">
         </div>
 
 
-        <div class="profile-content">
+        <h2
+            id="profile-name">
+        </h2>
 
 
-            <div
-                class="rank"
-                id="profile-rank">
-            </div>
+        <div
+            class="profile-info"
+            id="profile-info">
+        </div>
 
 
-            <h2
-                id="profile-name">
-            </h2>
-
-
-            <div
-                class="profile-info"
-                id="profile-info">
-            </div>
-
-
-            <div
-                class="quote"
-                id="profile-quote">
-            </div>
-
-
+        <div
+            class="quote"
+            id="profile-quote">
         </div>
 
 
     </div>
 
-</div>
 
+</div>
+```
+
+</div>
 
 <script>
 
 
 /* =====================================================
    CYCLES
+
+   ONE CYCLE = SIX MONTHS
 ===================================================== */
 
 const cycles = [
@@ -1641,6 +1562,7 @@ let currentMonth =
 
 const students = [
 
+
     /* =================================================
        RANK 1
     ================================================= */
@@ -1667,6 +1589,10 @@ const students = [
 
         quote:
             "A brilliant northern light.",
+
+        /*
+           URSA MINOR POSITION
+        */
 
         x:
             820,
@@ -2001,17 +1927,14 @@ const stellarColors = {
 
 
 /* =====================================================
-   CONSTELLATION LINES
+   CONSTELLATION CONNECTIONS
+
+   IMPORTANT:
+   The order here does NOT determine star position.
+
+   It only determines which stars are connected.
+
 ===================================================== */
-
-/*
-   Untuk Juni:
-   garis ini bisa kamu ubah bebas lewat editor.
-
-   Nama tidak menentukan posisi.
-   Nama hanya menentukan siapa terhubung
-   dengan siapa.
-*/
 
 const constellationLines = {
 
@@ -2083,6 +2006,11 @@ const originalPositions =
 
 /* =====================================================
    EDIT MODE
+
+   Open with:
+
+   ?edit=true
+
 ===================================================== */
 
 const editMode =
@@ -2102,6 +2030,14 @@ let selectedStar =
 
 let draggedStar =
     null;
+
+
+let pointerOffsetX =
+    0;
+
+
+let pointerOffsetY =
+    0;
 
 
 /* =====================================================
@@ -2157,7 +2093,16 @@ if (editMode) {
 
 function drawConstellation() {
 
-    svg.innerHTML = "";
+
+    /*
+       Only clear the SVG when drawing.
+
+       Dragging itself no longer calls this function.
+       This fixes the vibrating / disappearing problem.
+    */
+
+    svg.innerHTML =
+        "";
 
 
     const monthStudents =
@@ -2193,7 +2138,7 @@ function drawConstellation() {
 
 
     /* =================================================
-       DRAW LINES
+       DRAW LINES FIRST
     ================================================= */
 
     lines.forEach(
@@ -2259,6 +2204,11 @@ function drawConstellation() {
                 "constellation-line"
             );
 
+
+            /*
+               EDIT MODE:
+               clicking a line deletes it.
+            */
 
             if (editMode) {
 
@@ -2475,7 +2425,7 @@ function drawConstellation() {
 
 
             /* =================================================
-               DRAGGING
+               EDITOR DRAG
             ================================================= */
 
             if (editMode) {
@@ -2500,7 +2450,14 @@ function drawConstellation() {
                     event.stopPropagation();
 
 
+                    /*
+                       In edit mode,
+                       clicking a star is only used
+                       for line creation.
+                    */
+
                     if (editMode) {
+
 
                         if (
                             addingLine
@@ -2513,10 +2470,16 @@ function drawConstellation() {
 
                         }
 
+
                         return;
 
                     }
 
+
+                    /*
+                       Normal mode:
+                       open profile.
+                    */
 
                     openProfile(
                         student
@@ -2551,6 +2514,11 @@ function setupDragging(
         event => {
 
 
+            /*
+               Do not drag while
+               adding a line.
+            */
+
             if (
                 addingLine
             ) {
@@ -2570,6 +2538,7 @@ function setupDragging(
             group.setPointerCapture(
                 event.pointerId
             );
+
 
         }
     );
@@ -2620,6 +2589,10 @@ function setupDragging(
                 );
 
 
+            /*
+               Keep stars inside map.
+            */
+
             x =
                 Math.max(
                     20,
@@ -2653,8 +2626,11 @@ function setupDragging(
 
 
             /*
-               Move ONLY this star.
-               Tidak redraw SVG.
+               IMPORTANT:
+
+               Move only this group.
+
+               DO NOT redraw SVG here.
             */
 
             group.setAttribute(
@@ -2665,6 +2641,11 @@ function setupDragging(
                 )`
             );
 
+
+            /*
+               Update all constellation lines
+               connected to this star.
+            */
 
             updateConnectedLines(
                 student
@@ -2709,7 +2690,7 @@ function setupDragging(
 
 
 /* =====================================================
-   UPDATE CONNECTED LINES
+   UPDATE CONNECTED LINES WHILE DRAGGING
 ===================================================== */
 
 function updateConnectedLines(
@@ -2777,10 +2758,7 @@ function updateConnectedLines(
                 );
 
 
-            if (
-                !studentA ||
-                !studentB
-            ) {
+            if (!studentA || !studentB) {
 
                 return;
 
@@ -2862,6 +2840,10 @@ function selectStarForLine(
 ) {
 
 
+    /*
+       First star.
+    */
+
     if (
         !selectedStar
     ) {
@@ -2880,6 +2862,10 @@ function selectStarForLine(
     }
 
 
+    /*
+       Same star = cancel.
+    */
+
     if (
         selectedStar.name ===
         student.name
@@ -2896,6 +2882,10 @@ function selectStarForLine(
     }
 
 
+    /*
+       Make sure array exists.
+    */
+
     if (
         !constellationLines[
             currentMonth
@@ -2908,6 +2898,10 @@ function selectStarForLine(
 
     }
 
+
+    /*
+       Check duplicate.
+    */
 
     const exists =
 
@@ -2939,6 +2933,10 @@ function selectStarForLine(
                 )
         );
 
+
+    /*
+       Add connection.
+    */
 
     if (!exists) {
 
@@ -3105,6 +3103,10 @@ document
         () => {
 
 
+            /*
+               Restore positions.
+            */
+
             originalPositions.forEach(
                 original => {
 
@@ -3130,6 +3132,10 @@ document
                 }
             );
 
+
+            /*
+               Restore lines.
+            */
 
             Object.keys(
                 originalLines
@@ -3276,46 +3282,16 @@ function openProfile(
     student
 ) {
 
-    const name =
-        document.getElementById(
-            "profile-name"
-        );
 
-    const rank =
-        document.getElementById(
-            "profile-rank"
-        );
-
-    const info =
-        document.getElementById(
-            "profile-info"
-        );
-
-    const quote =
-        document.getElementById(
-            "profile-quote"
-        );
-
-    const portrait =
-        document.getElementById(
-            "portrait"
-        );
-
-    const image =
-        document.getElementById(
-            "portrait-image"
-        );
-
-
-    /* =================================================
-       BASIC DATA
-    ================================================= */
-
-    name.textContent =
+    document.getElementById(
+        "profile-name"
+    ).textContent =
         student.name;
 
 
-    rank.textContent =
+    document.getElementById(
+        "profile-rank"
+    ).textContent =
 
         student.rank
 
@@ -3329,56 +3305,49 @@ function openProfile(
             : `Recorded Star · ${student.month} 2026`;
 
 
-    /* =================================================
-       RESET PORTRAIT STATE
-       
-       VERY IMPORTANT:
-       Bersihkan semua state foto terlebih dahulu
-       sebelum menentukan Rank 0 / Rank 1–3.
-    ================================================= */
-
-    portrait.classList.remove(
-        "has-image"
-    );
-
-    portrait.classList.remove(
-        "no-photo"
-    );
+    const portrait =
+        document.getElementById(
+            "portrait"
+        );
 
 
-    image.onload =
-        null;
-
-    image.onerror =
-        null;
-
-    image.removeAttribute(
-        "src"
-    );
+    const image =
+        document.getElementById(
+            "portrait-image"
+        );
 
 
-    /* =================================================
+    /*
+       =================================================
        RANK 0
-       
-       DATA ONLY
-       NO PHOTO
-       NO QUOTE
-    ================================================= */
+       DATA ONLY — NO PHOTO
+       =================================================
+    */
 
     if (
         student.rank === 0
     ) {
 
-        portrait.classList.add(
-            "no-photo"
+
+        portrait.classList.remove(
+            "has-image"
         );
 
 
-        info.textContent =
+        image.removeAttribute(
+            "src"
+        );
+
+
+        document.getElementById(
+            "profile-info"
+        ).textContent =
             student.identity;
 
 
-        quote.textContent =
+        document.getElementById(
+            "profile-quote"
+        ).textContent =
             "";
 
 
@@ -3392,36 +3361,39 @@ function openProfile(
     }
 
 
-    /* =================================================
+    /*
+       =================================================
        RANK 1–3
-       
        PHOTO + DATA
-    ================================================= */
+       =================================================
+    */
 
-    info.textContent =
+    document.getElementById(
+        "profile-info"
+    ).textContent =
         student.identity;
 
 
-    quote.textContent =
+    document.getElementById(
+        "profile-quote"
+    ).textContent =
         `“${student.quote}”`;
 
 
-    /*
-       Pastikan portrait bukan mode no-photo.
-    */
-
     portrait.classList.remove(
-        "no-photo"
+        "has-image"
     );
 
 
-    /*
-       Load foto.
-    */
+    image.removeAttribute(
+        "src"
+    );
+
 
     if (
         student.photo
     ) {
+
 
         image.onload =
             () => {
@@ -3454,22 +3426,7 @@ function openProfile(
     );
 
 }
-```
 
-**Data Rank 0-mu tetap seperti sekarang**, misalnya:
-
-```javascript
-{
-    name: "Stella Hearts2Hearts",
-    month: "June",
-    rank: 0,
-    type: "WHITE",
-    identity: "Recorded Star · Hearts2Hearts",
-    photo: "",
-    quote: "",
-    x: 650,
-    y: 175
-},
 
 /* =====================================================
    CLOSE MODAL
@@ -3482,6 +3439,7 @@ document
     .addEventListener(
         "click",
         () => {
+
 
             modal.classList.remove(
                 "active"
@@ -3513,6 +3471,11 @@ modal.addEventListener(
 
 /* =====================================================
    CYCLE NAVIGATION
+
+   Cycle moves SIX MONTHS at a time.
+
+   Month tabs only switch the month
+   INSIDE the current cycle.
 ===================================================== */
 
 document
