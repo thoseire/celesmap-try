@@ -1,5 +1,5 @@
+```html
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -56,6 +56,7 @@ body::before {
         #070914;
 }
 
+
 /* =========================
    HEADER
 ========================= */
@@ -86,8 +87,9 @@ h1 {
     opacity: 0.55;
 }
 
+
 /* =========================
-   CYCLE NAVIGATION
+   CYCLE
 ========================= */
 
 .cycle-navigation {
@@ -148,6 +150,7 @@ h1 {
     text-transform: uppercase;
 }
 
+
 /* =========================
    MONTH TABS
 ========================= */
@@ -199,6 +202,7 @@ h1 {
     border-color:
         rgba(255,255,255,0.25);
 }
+
 
 /* =========================
    MAP
@@ -266,8 +270,9 @@ h1 {
     border-radius: 50%;
 }
 
+
 /* =========================
-   MONTH LABEL
+   MONTH TITLE
 ========================= */
 
 .map-month-title {
@@ -288,6 +293,7 @@ h1 {
     z-index: 5;
 }
 
+
 /* =========================
    SVG
 ========================= */
@@ -305,8 +311,9 @@ svg {
     z-index: 3;
 }
 
+
 /* =========================
-   CONSTELLATION LINES
+   LINES
 ========================= */
 
 .constellation-line {
@@ -334,6 +341,14 @@ svg {
         3 5;
 }
 
+.editor-line-hit {
+    stroke: transparent;
+    stroke-width: 15;
+
+    fill: none;
+}
+
+
 /* =========================
    STARS
 ========================= */
@@ -343,9 +358,6 @@ svg {
 
     transform-box: fill-box;
     transform-origin: center;
-
-    transition:
-        filter 0.2s ease;
 }
 
 .star:hover {
@@ -356,7 +368,7 @@ svg {
 
 .star-core {
     transition:
-        r 0.2s ease;
+        r 0.15s ease;
 }
 
 .star-label {
@@ -379,6 +391,7 @@ svg {
 .star:hover .star-label {
     opacity: 1;
 }
+
 
 /* =========================
    PROFILE MODAL
@@ -554,6 +567,7 @@ svg {
     opacity: 0.6;
 }
 
+
 /* =====================================================
    HIDDEN ADMIN EDITOR
 ===================================================== */
@@ -566,7 +580,7 @@ svg {
     top: 20px;
     right: 20px;
 
-    width: 300px;
+    width: 310px;
     max-height: calc(100vh - 40px);
 
     overflow-y: auto;
@@ -663,6 +677,14 @@ svg {
 .editor-button:hover {
     background:
         rgba(255,255,255,0.1);
+}
+
+.editor-button.active {
+    background:
+        rgba(114,183,255,0.12);
+
+    border-color:
+        rgba(114,183,255,0.4);
 }
 
 .editor-button.danger {
@@ -763,6 +785,51 @@ svg {
     display: block;
 }
 
+
+/* =========================
+   CONNECTING INDICATOR
+========================= */
+
+#connection-indicator {
+    display: none;
+
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 20px;
+
+    transform: translateX(-50%);
+
+    padding: 10px 16px;
+
+    background:
+        rgba(10,12,25,0.95);
+
+    border:
+        1px solid rgba(114,183,255,0.35);
+
+    border-radius: 30px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+    z-index: 600;
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,0.5);
+}
+
+#connection-indicator.active {
+    display: block;
+}
+
+
 /* =========================
    RESPONSIVE
 ========================= */
@@ -803,15 +870,18 @@ svg {
         top: 10px;
         right: 10px;
         left: 10px;
+
         width: auto;
-        max-height: calc(100vh - 20px);
+
+        max-height:
+            calc(100vh - 20px);
     }
 
 }
 
 </style>
-
 </head>
+
 
 <body>
 
@@ -833,12 +903,14 @@ A record of stars that crossed the classroom sky.
 
 </header>
 
+
 <div class="cycle-navigation">
 
 <button
 class="nav-button"
 id="previous">
-‹ </button>
+‹
+</button>
 
 <div class="cycle-title">
 
@@ -855,14 +927,17 @@ June — November 2026
 <button
 class="nav-button"
 id="next">
-› </button>
+›
+</button>
 
 </div>
+
 
 <div
 class="month-tabs"
 id="month-tabs">
 </div>
+
 
 <div class="map-container">
 
@@ -877,16 +952,18 @@ June · Ursa Minor
 <svg
 id="constellation"
 viewBox="0 0 1000 562.5"
-preserveAspectRatio="none"> </svg>
+preserveAspectRatio="none">
+</svg>
 
 </div>
 
 </div>
 
 </div>
+
 
 <!-- =========================
-     PROFILE
+     PROFILE MODAL
 ========================= -->
 
 <div
@@ -898,7 +975,8 @@ id="modal">
 <button
 class="close"
 id="close">
-× </button>
+×
+</button>
 
 <div
 class="portrait"
@@ -910,7 +988,8 @@ alt="Student portrait">
 
 <span
 class="portrait-placeholder">
-STUDENT PORTRAIT </span>
+STUDENT PORTRAIT
+</span>
 
 </div>
 
@@ -941,6 +1020,7 @@ id="profile-quote">
 
 </div>
 
+
 <!-- =====================================================
      HIDDEN ADMIN EDITOR
 ===================================================== -->
@@ -955,10 +1035,11 @@ Constellation Editor
 Private Admin Mode
 </div>
 
+
 <div class="editor-section">
 
 <div class="editor-section-title">
-Current Selection
+Selection
 </div>
 
 <div
@@ -968,6 +1049,7 @@ No star selected.
 </div>
 
 </div>
+
 
 <div class="editor-section">
 
@@ -992,9 +1074,11 @@ value="8">
 <span
 class="editor-value"
 id="size-value">
-8 </span>
+8
+</span>
 
 </div>
+
 
 <div class="editor-row">
 
@@ -1013,21 +1097,20 @@ value="18">
 <span
 class="editor-value"
 id="glow-value">
-18 </span>
+18
+</span>
 
 </div>
 
-<button
-class="editor-button"
-id="copy-star">
-COPY STAR DATA </button>
 
 <button
 class="editor-button danger"
 id="delete-star">
-DELETE STAR </button>
+DELETE STAR
+</button>
 
 </div>
+
 
 <div class="editor-section">
 
@@ -1038,15 +1121,25 @@ Connections
 <div
 class="editor-status"
 id="connection-status">
-Click two stars to connect them.
+Connect two stars to create a constellation line.
 </div>
+
+
+<button
+class="editor-button"
+id="connect-mode">
++ CONNECT STARS
+</button>
+
 
 <button
 class="editor-button danger"
 id="delete-line">
-DELETE SELECTED LINE </button>
+DELETE SELECTED LINE
+</button>
 
 </div>
+
 
 <div class="editor-section">
 
@@ -1054,42 +1147,63 @@ DELETE SELECTED LINE </button>
 Data
 </div>
 
+
 <button
 class="editor-button"
 id="copy-all">
-COPY ALL DATA </button>
+COPY ALL DATA
+</button>
+
 
 <button
 class="editor-button"
 id="save-local">
-SAVE TO BROWSER </button>
+SAVE TO BROWSER
+</button>
+
 
 <button
 class="editor-button"
 id="load-local">
-LOAD FROM BROWSER </button>
+LOAD FROM BROWSER
+</button>
 
 </div>
+
 
 <div class="editor-help">
 
-<strong>How to use:</strong><br><br>
-
+<strong>Star editing</strong><br>
 Drag a star to move it.<br>
-Click one star, then another star to connect them.<br>
-Click a line to select it.<br>
-Press Delete to remove selected line/star.<br><br>
+Click a star to select it.<br><br>
 
-Press <strong>Ctrl + Shift + A</strong>
-again to close editor.
+<strong>Connections</strong><br>
+Press CONNECT STARS.<br>
+Click the first star.<br>
+Click the second star.<br>
+A line will be created automatically.<br><br>
+
+Click an existing line to select it.<br>
+Press DELETE to remove it.<br><br>
+
+Press
+<strong>Ctrl + Shift + A</strong>
+to close the editor.
 
 </div>
 
 </div>
+
+
+<div id="connection-indicator">
+CONNECTING — SELECT SECOND STAR
+</div>
+
 
 <div id="admin-badge">
 ADMIN EDIT MODE
 </div>
+
 
 <script>
 
@@ -1127,7 +1241,9 @@ months: [
 
 ];
 
+
 let currentCycle = 0;
+
 let currentMonth = "June";
 
 
@@ -1257,6 +1373,11 @@ x: 520,
 y: 350
 },
 
+
+/* =========================
+   JULY
+========================= */
+
 {
 name: "Orion Blackwood",
 month: "July",
@@ -1292,6 +1413,11 @@ quote: "A persistent red glow.",
 x: 525,
 y: 285
 },
+
+
+/* =========================
+   AUGUST
+========================= */
 
 {
 name: "Iris Wren",
@@ -1329,6 +1455,11 @@ x: 770,
 y: 300
 },
 
+
+/* =========================
+   SEPTEMBER
+========================= */
+
 {
 name: "Sylvie Dawn",
 month: "September",
@@ -1365,6 +1496,11 @@ x: 620,
 y: 470
 },
 
+
+/* =========================
+   OCTOBER
+========================= */
+
 {
 name: "Amelia Reed",
 month: "October",
@@ -1400,6 +1536,11 @@ quote: "A warm ember in the archive.",
 x: 350,
 y: 485
 },
+
+
+/* =========================
+   NOVEMBER
+========================= */
 
 {
 name: "Noah Finch",
@@ -1511,6 +1652,11 @@ document.getElementById(
 "admin-badge"
 );
 
+const connectionIndicator =
+document.getElementById(
+"connection-indicator"
+);
+
 
 /* =====================================================
    ADMIN STATE
@@ -1518,17 +1664,21 @@ document.getElementById(
 
 let adminMode = false;
 
+let connectMode = false;
+
+let connectingStar = null;
+
 let selectedStar = null;
 
 let selectedLine = null;
 
-let connectingStar = null;
-
 let draggingStar = null;
+
+let dragMoved = false;
 
 
 /* =====================================================
-   GET MONTH STUDENTS
+   GET STUDENTS
 ===================================================== */
 
 function getMonthStudents(month) {
@@ -1542,18 +1692,7 @@ student.month === month
 
 
 /* =====================================================
-   GET GLOBAL INDEX
-===================================================== */
-
-function getGlobalIndex(student) {
-
-return students.indexOf(student);
-
-}
-
-
-/* =====================================================
-   DRAW CONSTELLATION
+   DRAW
 ===================================================== */
 
 function drawConstellation() {
@@ -1566,9 +1705,9 @@ currentMonth
 );
 
 
-/* =========================
-   LINES
-========================= */
+/* =====================================================
+   DRAW LINES
+===================================================== */
 
 const lines =
 constellationLines[
@@ -1631,9 +1770,13 @@ isMain
 );
 
 
+svg.appendChild(
+line
+);
+
+
 /*
- Invisible wider hit area
- for editor mode.
+ Invisible hit area
 */
 
 const hit =
@@ -1663,13 +1806,8 @@ studentB.y
 );
 
 hit.setAttribute(
-"stroke",
-"transparent"
-);
-
-hit.setAttribute(
-"stroke-width",
-"15"
+"class",
+"editor-line-hit"
 );
 
 hit.style.pointerEvents =
@@ -1687,6 +1825,9 @@ return;
 
 event.stopPropagation();
 
+if (connectMode)
+return;
+
 selectedLine = {
 month: currentMonth,
 index: lineIndex
@@ -1694,13 +1835,9 @@ index: lineIndex
 
 selectedStar = null;
 
-updateEditorStatus();
+updateEditor();
 
 }
-);
-
-svg.appendChild(
-line
 );
 
 svg.appendChild(
@@ -1711,9 +1848,9 @@ hit
 );
 
 
-/* =========================
-   STARS
-========================= */
+/* =====================================================
+   DRAW STARS
+===================================================== */
 
 monthStudents.forEach(
 student => {
@@ -1740,58 +1877,58 @@ group.setAttribute(
 );
 
 
-/*
- Rank sizing
-*/
-
-const glowRadius =
-student.glow ??
-(
+const defaultGlow =
 student.rank === 1
 ? 18
 : student.rank === 2
 ? 15
 : student.rank === 3
 ? 13
-: 8
-);
+: 8;
 
-const starRadius =
-student.size ??
-(
+
+const defaultSize =
 student.rank === 1
 ? 8
 : student.rank === 2
 ? 6.5
 : student.rank === 3
 ? 5.5
-: 3.3
-);
+: 3.3;
 
-
-/*
- Glow
-*/
 
 const glow =
+student.glow ??
+defaultGlow;
+
+const starRadius =
+student.size ??
+defaultSize;
+
+
+/* =========================
+   GLOW
+========================= */
+
+const glowCircle =
 document.createElementNS(
 "http://www.w3.org/2000/svg",
 "circle"
 );
 
-glow.setAttribute(
+glowCircle.setAttribute(
 "r",
-glowRadius
+glow
 );
 
-glow.setAttribute(
+glowCircle.setAttribute(
 "fill",
 stellarColors[
 student.type
 ]
 );
 
-glow.setAttribute(
+glowCircle.setAttribute(
 "opacity",
 student.rank
 ? "0.16"
@@ -1799,9 +1936,9 @@ student.rank
 );
 
 
-/*
- Core
-*/
+/* =========================
+   CORE
+========================= */
 
 const star =
 document.createElementNS(
@@ -1837,9 +1974,9 @@ star.setAttribute(
 );
 
 
-/*
- Label
-*/
+/* =========================
+   LABEL
+========================= */
 
 const label =
 document.createElementNS(
@@ -1867,7 +2004,7 @@ student.name;
 
 
 group.appendChild(
-glow
+glowCircle
 );
 
 group.appendChild(
@@ -1880,7 +2017,7 @@ label
 
 
 /* =====================================================
-   ADMIN DRAG
+   MOUSE DOWN
 ===================================================== */
 
 group.addEventListener(
@@ -1892,27 +2029,93 @@ return;
 
 event.preventDefault();
 
+event.stopPropagation();
+
 selectedStar = student;
 
 selectedLine = null;
 
-connectingStar = null;
-
 draggingStar = student;
 
-updateEditorStatus();
+dragMoved = false;
+
+updateEditor();
 
 }
 );
 
 
 /* =====================================================
-   ADMIN CONNECT
+   MOUSE MOVE
+===================================================== */
+
+group.addEventListener(
+"mousemove",
+event => {
+
+if (
+!adminMode ||
+draggingStar !== student
+) return;
+
+dragMoved = true;
+
+const rect =
+svg.getBoundingClientRect();
+
+const x =
+(event.clientX - rect.left)
+* (1000 / rect.width);
+
+const y =
+(event.clientY - rect.top)
+* (562.5 / rect.height);
+
+
+student.x =
+Math.max(
+0,
+Math.min(
+1000,
+x
+)
+);
+
+student.y =
+Math.max(
+0,
+Math.min(
+562.5,
+y
+)
+);
+
+
+drawConstellation();
+
+selectedStar =
+student;
+
+updateEditor();
+
+}
+);
+
+
+/* =====================================================
+   CLICK STAR
 ===================================================== */
 
 group.addEventListener(
 "click",
 event => {
+
+event.stopPropagation();
+
+
+/*
+ PUBLIC MODE
+*/
 
 if (!adminMode) {
 
@@ -1922,51 +2125,50 @@ return;
 
 }
 
-event.stopPropagation();
 
+/*
+ If we just dragged,
+ do not interpret it as click.
+*/
 
-if (
-connectingStar &&
-connectingStar !== student
-) {
+if (dragMoved) {
 
-connectStars(
-connectingStar,
-student
-);
-
-connectingStar = null;
+dragMoved = false;
 
 return;
 
 }
 
 
-selectedStar = student;
+/*
+ CONNECT MODE
+*/
 
-selectedLine = null;
+if (connectMode) {
 
-connectingStar = student;
+handleConnectionClick(
+student
+);
 
-updateEditorStatus();
+return;
+
+}
+
+
+/*
+ NORMAL ADMIN SELECTION
+*/
+
+selectedStar =
+student;
+
+selectedLine =
+null;
+
+updateEditor();
 
 }
 );
-
-
-/* =====================================================
-   PUBLIC PROFILE
-===================================================== */
-
-if (!adminMode) {
-
-group.addEventListener(
-"click",
-() =>
-openProfile(student)
-);
-
-}
 
 
 svg.appendChild(
@@ -1976,65 +2178,10 @@ group
 }
 );
 
-}
-
 
 /* =====================================================
-   DRAG HANDLING
+   GLOBAL MOUSE UP
 ===================================================== */
-
-document.addEventListener(
-"mousemove",
-event => {
-
-if (
-!adminMode ||
-!draggingStar
-) return;
-
-
-const rect =
-svg.getBoundingClientRect();
-
-const scaleX =
-1000 / rect.width;
-
-const scaleY =
-562.5 / rect.height;
-
-
-draggingStar.x =
-Math.max(
-0,
-Math.min(
-1000,
-(event.clientX - rect.left)
-* scaleX
-)
-);
-
-
-draggingStar.y =
-Math.max(
-0,
-Math.min(
-562.5,
-(event.clientY - rect.top)
-* scaleY
-)
-);
-
-
-drawConstellation();
-
-selectedStar =
-draggingStar;
-
-updateEditorStatus();
-
-}
-);
-
 
 document.addEventListener(
 "mouseup",
@@ -2045,15 +2192,47 @@ draggingStar = null;
 }
 );
 
+}
+
 
 /* =====================================================
-   CONNECT STARS
+   CONNECTION MODE
 ===================================================== */
 
-function connectStars(
-starA,
-starB
+function handleConnectionClick(
+student
 ) {
+
+if (!connectingStar) {
+
+connectingStar =
+student;
+
+connectionIndicator.textContent =
+`CONNECTING FROM: ${student.name}`;
+
+connectionIndicator.classList.add(
+"active"
+);
+
+document.getElementById(
+"connection-status"
+).textContent =
+`First star: ${student.name}`;
+
+return;
+
+}
+
+
+if (
+connectingStar === student
+) {
+
+return;
+
+}
+
 
 const monthStudents =
 getMonthStudents(
@@ -2062,12 +2241,12 @@ currentMonth
 
 const a =
 monthStudents.indexOf(
-starA
+connectingStar
 );
 
 const b =
 monthStudents.indexOf(
-starB
+student
 );
 
 if (
@@ -2113,16 +2292,94 @@ currentMonth
 [a, b, true]
 );
 
+document.getElementById(
+"connection-status"
+).textContent =
+`Connected: ${connectingStar.name} → ${student.name}`;
+
 }
 
 
-selectedLine = null;
+connectingStar = null;
+
+connectMode = false;
+
+document.getElementById(
+"connect-mode"
+).classList.remove(
+"active"
+);
+
+connectionIndicator.classList.remove(
+"active"
+);
 
 drawConstellation();
 
-updateEditorStatus();
+updateEditor();
 
 }
+
+
+/* =====================================================
+   CONNECT BUTTON
+===================================================== */
+
+document
+.getElementById(
+"connect-mode"
+)
+.addEventListener(
+"click",
+() => {
+
+if (!adminMode)
+return;
+
+connectMode =
+!connectMode;
+
+connectingStar = null;
+
+selectedLine = null;
+
+document.getElementById(
+"connect-mode"
+).classList.toggle(
+"active",
+connectMode
+);
+
+
+if (connectMode) {
+
+document.getElementById(
+"connection-status"
+).textContent =
+"Click the first star.";
+
+connectionIndicator.textContent =
+"CONNECTING — SELECT FIRST STAR";
+
+connectionIndicator.classList.add(
+"active"
+);
+
+} else {
+
+document.getElementById(
+"connection-status"
+).textContent =
+"Connection mode cancelled.";
+
+connectionIndicator.classList.remove(
+"active"
+);
+
+}
+
+}
+);
 
 
 /* =====================================================
@@ -2130,7 +2387,9 @@ updateEditorStatus();
 ===================================================== */
 
 document
-.getElementById("delete-line")
+.getElementById(
+"delete-line"
+)
 .addEventListener(
 "click",
 () => {
@@ -2159,7 +2418,7 @@ selectedLine = null;
 
 drawConstellation();
 
-updateEditorStatus();
+updateEditor();
 
 }
 );
@@ -2170,7 +2429,9 @@ updateEditorStatus();
 ===================================================== */
 
 document
-.getElementById("delete-star")
+.getElementById(
+"delete-star"
+)
 .addEventListener(
 "click",
 () => {
@@ -2179,19 +2440,13 @@ if (!selectedStar)
 return;
 
 
-const index =
-students.indexOf(
-selectedStar
-);
-
-
-if (index === -1)
-return;
+const target =
+selectedStar;
 
 
 /*
- Remove connections
- belonging to star.
+ Remove all lines
+ containing this star.
 */
 
 Object.keys(
@@ -2204,12 +2459,12 @@ getMonthStudents(
 month
 );
 
-const localIndex =
+const index =
 monthStudents.indexOf(
-selectedStar
+target
 );
 
-if (localIndex === -1)
+if (index === -1)
 return;
 
 
@@ -2218,12 +2473,14 @@ constellationLines[
 month
 ];
 
+
 const filtered =
 lines.filter(
 line =>
-line[0] !== localIndex &&
-line[1] !== localIndex
+line[0] !== index &&
+line[1] !== index
 );
+
 
 const removed =
 lines.length -
@@ -2232,36 +2489,68 @@ filtered.length;
 
 if (removed) {
 
+const remapped = [];
+
+filtered.forEach(
+line => {
+
+let a = line[0];
+
+let b = line[1];
+
+if (a > index)
+a--;
+
+if (b > index)
+b--;
+
+remapped.push(
+[a, b, line[2]]
+);
+
+}
+);
+
 constellationLines[
 month
-] = filtered;
+] = remapped;
 
 }
 
 }
 );
 
+
+const index =
+students.indexOf(
+target
+);
+
+if (index !== -1) {
 
 students.splice(
 index,
 1
 );
 
+}
+
+
 selectedStar = null;
 
 drawConstellation();
 
-updateEditorStatus();
+updateEditor();
 
 }
 );
 
 
 /* =====================================================
-   EDITOR STATUS
+   UPDATE EDITOR
 ===================================================== */
 
-function updateEditorStatus() {
+function updateEditor() {
 
 const status =
 document.getElementById(
@@ -2270,48 +2559,56 @@ document.getElementById(
 
 if (selectedStar) {
 
-status.innerHTML =
-
-`<strong>${selectedStar.name}</strong><br>
-X: ${Math.round(selectedStar.x)}<br>
-Y: ${Math.round(selectedStar.y)}`;
-
-const size =
-selectedStar.size ??
-(
+const defaultSize =
 selectedStar.rank === 1
 ? 8
 : selectedStar.rank === 2
 ? 6.5
 : selectedStar.rank === 3
 ? 5.5
-: 3.3
-);
+: 3.3;
 
-const glow =
-selectedStar.glow ??
-(
+
+const defaultGlow =
 selectedStar.rank === 1
 ? 18
 : selectedStar.rank === 2
 ? 15
 : selectedStar.rank === 3
 ? 13
-: 8
-);
+: 8;
+
+
+const size =
+selectedStar.size ??
+defaultSize;
+
+const glow =
+selectedStar.glow ??
+defaultGlow;
+
+
+status.innerHTML =
+`<strong>${selectedStar.name}</strong><br>
+X: ${Math.round(selectedStar.x)}<br>
+Y: ${Math.round(selectedStar.y)}`;
+
 
 document.getElementById(
 "size-slider"
-).value = size;
+).value =
+size;
 
 document.getElementById(
 "size-value"
 ).textContent =
 size;
 
+
 document.getElementById(
 "glow-slider"
-).value = glow;
+).value =
+glow;
 
 document.getElementById(
 "glow-value"
@@ -2338,7 +2635,6 @@ selectedLine.month
 );
 
 status.innerHTML =
-
 `<strong>Selected Line</strong><br>
 ${monthStudents[line[0]].name}
 <br>
@@ -2357,11 +2653,13 @@ status.textContent =
 
 
 /* =====================================================
-   SIZE SLIDER
+   SIZE
 ===================================================== */
 
 document
-.getElementById("size-slider")
+.getElementById(
+"size-slider"
+)
 .addEventListener(
 "input",
 event => {
@@ -2381,18 +2679,20 @@ selectedStar.size;
 
 drawConstellation();
 
-updateEditorStatus();
+updateEditor();
 
 }
 );
 
 
 /* =====================================================
-   GLOW SLIDER
+   GLOW
 ===================================================== */
 
 document
-.getElementById("glow-slider")
+.getElementById(
+"glow-slider"
+)
 .addEventListener(
 "input",
 event => {
@@ -2412,48 +2712,7 @@ selectedStar.glow;
 
 drawConstellation();
 
-updateEditorStatus();
-
-}
-);
-
-
-/* =====================================================
-   COPY STAR DATA
-===================================================== */
-
-document
-.getElementById("copy-star")
-.addEventListener(
-"click",
-async () => {
-
-if (!selectedStar)
-return;
-
-
-const data =
-`{
-    name: "${selectedStar.name}",
-    month: "${selectedStar.month}",
-    rank: ${selectedStar.rank},
-    type: "${selectedStar.type}",
-    identity: "${selectedStar.identity}",
-    photo: "${selectedStar.photo}",
-    quote: "${selectedStar.quote}",
-    x: ${Math.round(selectedStar.x)},
-    y: ${Math.round(selectedStar.y)},
-    size: ${selectedStar.size ?? "default"},
-    glow: ${selectedStar.glow ?? "default"}
-}`;
-
-await navigator.clipboard.writeText(
-data
-);
-
-alert(
-"Star data copied!"
-);
+updateEditor();
 
 }
 );
@@ -2464,7 +2723,9 @@ alert(
 ===================================================== */
 
 document
-.getElementById("copy-all")
+.getElementById(
+"copy-all"
+)
 .addEventListener(
 "click",
 async () => {
@@ -2486,12 +2747,29 @@ output +=
     photo: "${student.photo}",
     quote: "${student.quote}",
     x: ${Math.round(student.x)},
-    y: ${Math.round(student.y)}${student.size !== undefined
-        ? `,\n    size: ${student.size}`
-        : ""}${student.glow !== undefined
-        ? `,\n    glow: ${student.glow}`
-        : ""}
-}`;
+    y: ${Math.round(student.y)}`;
+
+if (
+student.size !== undefined
+) {
+
+output +=
+`,\n    size: ${student.size}`;
+
+}
+
+if (
+student.glow !== undefined
+) {
+
+output +=
+`,\n    glow: ${student.glow}`;
+
+}
+
+output +=
+"\n}";
+
 
 if (
 index <
@@ -2512,7 +2790,7 @@ output +=
 
 
 output +=
-"const constellationLines = " +
+"constellationLines = " +
 JSON.stringify(
 constellationLines,
 null,
@@ -2520,6 +2798,8 @@ null,
 ) +
 ";";
 
+
+try {
 
 await navigator.clipboard.writeText(
 output
@@ -2529,16 +2809,26 @@ alert(
 "ALL DATA COPIED!"
 );
 
+} catch {
+
+alert(
+"Could not copy automatically. Please copy manually."
+);
+
+}
+
 }
 );
 
 
 /* =====================================================
-   SAVE LOCAL
+   SAVE
 ===================================================== */
 
 document
-.getElementById("save-local")
+.getElementById(
+"save-local"
+)
 .addEventListener(
 "click",
 () => {
@@ -2566,11 +2856,13 @@ alert(
 
 
 /* =====================================================
-   LOAD LOCAL
+   LOAD
 ===================================================== */
 
 document
-.getElementById("load-local")
+.getElementById(
+"load-local"
+)
 .addEventListener(
 "click",
 () => {
@@ -2584,6 +2876,7 @@ const savedLines =
 localStorage.getItem(
 "celestialArchiveLines"
 );
+
 
 if (!savedStudents) {
 
@@ -2600,6 +2893,7 @@ const parsedStudents =
 JSON.parse(
 savedStudents
 );
+
 
 students.length = 0;
 
@@ -2618,12 +2912,14 @@ JSON.parse(
 savedLines
 );
 
+
 Object.keys(
 constellationLines
 ).forEach(
 key =>
 delete constellationLines[key]
 );
+
 
 Object.assign(
 constellationLines,
@@ -2635,7 +2931,7 @@ parsedLines
 
 drawConstellation();
 
-updateEditorStatus();
+updateEditor();
 
 alert(
 "Saved data loaded!"
@@ -2676,15 +2972,22 @@ adminMode
 );
 
 
+connectMode = false;
+
+connectingStar = null;
+
 selectedStar = null;
 
 selectedLine = null;
 
-connectingStar = null;
+connectionIndicator.classList.remove(
+"active"
+);
+
 
 drawConstellation();
 
-updateEditorStatus();
+updateEditor();
 
 }
 
@@ -2710,25 +3013,11 @@ event.key !== "Delete"
 
 if (selectedLine) {
 
-const lines =
-constellationLines[
-selectedLine.month
-];
-
-if (lines) {
-
-lines.splice(
-selectedLine.index,
-1
-);
-
-}
-
-selectedLine = null;
-
-drawConstellation();
-
-updateEditorStatus();
+document
+.getElementById(
+"delete-line"
+)
+.click();
 
 return;
 
@@ -2794,11 +3083,25 @@ button.addEventListener(
 currentMonth =
 month;
 
+connectMode = false;
+
+connectingStar = null;
+
+selectedStar = null;
+
+selectedLine = null;
+
+connectionIndicator.classList.remove(
+"active"
+);
+
 renderMonthTabs();
 
 updateMonthTitle();
 
 drawConstellation();
+
+updateEditor();
 
 }
 );
@@ -2810,8 +3113,6 @@ button
 
 }
 );
-
-}
 
 
 /* =====================================================
@@ -2880,7 +3181,9 @@ drawConstellation();
 ===================================================== */
 
 document
-.getElementById("previous")
+.getElementById(
+"previous"
+)
 .addEventListener(
 "click",
 () => {
@@ -2907,7 +3210,9 @@ updateCycle();
 ===================================================== */
 
 document
-.getElementById("next")
+.getElementById(
+"next"
+)
 .addEventListener(
 "click",
 () => {
@@ -3030,11 +3335,13 @@ modal.classList.add(
 
 
 /* =====================================================
-   CLOSE
+   CLOSE MODAL
 ===================================================== */
 
 document
-.getElementById("close")
+.getElementById(
+"close"
+)
 .addEventListener(
 "click",
 () => {
@@ -3075,3 +3382,4 @@ updateCycle();
 
 </body>
 </html>
+```
