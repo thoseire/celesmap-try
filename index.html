@@ -1,745 +1,1546 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>The Celestial Archive</title>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+
+>
+
+<title>
+    The Celestial Archive
+</title>
 
 <style>
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+
 * {
     box-sizing: border-box;
 }
 
+html,
 body {
     margin: 0;
-    background: #070914;
-    color: #eeeaff;
-    font-family: Georgia, "Times New Roman", serif;
-    overflow-x: hidden;
+    min-height: 100%;
 }
 
-/* =========================
-   BACKGROUND
-========================= */
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.5;
-
-    background-image:
-        radial-gradient(circle, white 0 1px, transparent 1.5px);
-
-    background-size: 90px 90px;
-}
-
-/* =========================
-   MAIN
-========================= */
-
-.archive {
-    min-height: 100vh;
-    padding: 28px 30px 35px;
+body {
 
     background:
+        #070914;
+
+    color:
+        #eeeaff;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    overflow-x:
+        hidden;
+}
+
+
+/* Background stars */
+
+body::before {
+
+    content:
+        "";
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    pointer-events:
+        none;
+
+    opacity:
+        0.45;
+
+    background-image:
+
+        radial-gradient(
+            circle,
+            white 0 1px,
+            transparent 1.5px
+        );
+
+    background-size:
+        90px 90px;
+}
+
+
+/* =====================================================
+   ARCHIVE
+===================================================== */
+
+.archive {
+
+    min-height:
+        100vh;
+
+    padding:
+        28px 24px 35px;
+
+    background:
+
         radial-gradient(
             circle at center,
-            rgba(93, 82, 155, 0.18),
-            transparent 45%
+            rgba(93,82,155,0.16),
+            transparent 48%
         ),
+
         #070914;
 }
 
-/* =========================
+
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
 header {
-    text-align: center;
+
+    text-align:
+        center;
 }
 
 .kicker {
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    opacity: 0.5;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        4px;
+
+    text-transform:
+        uppercase;
+
+    opacity:
+        0.5;
 }
 
 h1 {
-    margin: 8px 0 4px;
 
-    font-size: clamp(30px, 4vw, 48px);
-    font-weight: normal;
-    letter-spacing: 7px;
+    margin:
+        9px 0 4px;
+
+    font-size:
+        clamp(
+            30px,
+            4vw,
+            52px
+        );
+
+    font-weight:
+        normal;
+
+    letter-spacing:
+        7px;
 }
 
 .subtitle {
-    font-size: 13px;
-    font-style: italic;
-    opacity: 0.6;
+
+    font-size:
+        13px;
+
+    font-style:
+        italic;
+
+    opacity:
+        0.55;
 }
 
-/* =========================
+
+/* =====================================================
    CYCLE NAVIGATION
-========================= */
+===================================================== */
 
 .cycle-navigation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 18px;
 
-    margin: 20px auto 8px;
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    gap:
+        16px;
+
+    margin:
+        22px auto 10px;
 }
 
 .nav-button {
-    width: 34px;
-    height: 34px;
 
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.2);
+    width:
+        34px;
 
-    background: rgba(255,255,255,0.04);
-    color: white;
+    height:
+        34px;
 
-    cursor: pointer;
-    font-size: 18px;
+    border-radius:
+        50%;
 
-    transition: background 0.2s ease;
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.18
+        );
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.04
+        );
+
+    color:
+        white;
+
+    cursor:
+        pointer;
+
+    font-size:
+        19px;
 }
 
 .nav-button:hover {
-    background: rgba(255,255,255,0.12);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.1
+        );
 }
 
 .cycle-title {
-    min-width: 230px;
-    text-align: center;
+
+    min-width:
+        230px;
+
+    text-align:
+        center;
 }
 
 .cycle-title strong {
-    display: block;
 
-    font-size: 17px;
-    font-weight: normal;
-    letter-spacing: 4px;
+    display:
+        block;
+
+    font-size:
+        18px;
+
+    font-weight:
+        normal;
+
+    letter-spacing:
+        4px;
 }
 
 .cycle-title span {
-    display: block;
 
-    margin-top: 4px;
+    display:
+        block;
 
-    font-family: Arial, sans-serif;
-    font-size: 9px;
-    letter-spacing: 3px;
+    margin-top:
+        4px;
 
-    opacity: 0.45;
-    text-transform: uppercase;
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        2.5px;
+
+    opacity:
+        0.4;
+
+    text-transform:
+        uppercase;
 }
 
-/* =========================
+
+/* =====================================================
    MONTH TABS
-========================= */
+===================================================== */
 
 .month-tabs {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-    gap: 6px;
+    display:
+        flex;
 
-    margin: 8px auto 15px;
+    justify-content:
+        center;
 
-    flex-wrap: wrap;
+    gap:
+        7px;
+
+    margin:
+        15px auto 12px;
+
+    flex-wrap:
+        wrap;
 }
 
 .month-tab {
-    border: none;
-    background: transparent;
 
-    color: rgba(255,255,255,0.4);
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.09
+        );
 
-    font-family: Arial, sans-serif;
-    font-size: 9px;
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.025
+        );
 
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.45
+        );
 
-    padding: 6px 10px;
+    padding:
+        7px 13px;
 
-    cursor: pointer;
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        2px;
+
+    text-transform:
+        uppercase;
+
+    cursor:
+        pointer;
 
     transition:
-        color 0.2s ease,
-        background 0.2s ease;
+        0.2s ease;
 }
 
 .month-tab:hover {
-    color: rgba(255,255,255,0.8);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
 }
 
 .month-tab.active {
-    color: white;
+
+    color:
+        white;
 
     background:
-        rgba(255,255,255,0.07);
+        rgba(
+            255,
+            255,
+            255,
+            0.09
+        );
 
-    border-radius: 3px;
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.25
+        );
 }
 
-/* =========================
+
+/* =====================================================
    MAP
-========================= */
+===================================================== */
 
 .map-container {
-    width: min(1050px, 92vw);
 
-    aspect-ratio: 16 / 8;
+    width:
+        min(
+            1100px,
+            94vw
+        );
 
-    margin: auto;
+    aspect-ratio:
+        16 / 9;
 
-    position: relative;
+    margin:
+        0 auto;
+
+    position:
+        relative;
 }
 
 .map {
-    position: absolute;
-    inset: 0;
 
-    border: 1px solid rgba(255,255,255,0.08);
+    position:
+        absolute;
 
-    border-radius: 18px;
+    inset:
+        0;
 
-    overflow: hidden;
+    overflow:
+        hidden;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    border-radius:
+        18px;
 
     background:
+
         radial-gradient(
             ellipse at center,
-            rgba(100,90,160,0.1),
-            transparent 60%
+            rgba(
+                100,
+                90,
+                160,
+                0.12
+            ),
+            transparent 62%
         );
 }
+
 
 /* Decorative orbital rings */
 
 .map::before {
-    content: "";
 
-    position: absolute;
-    inset: 8%;
+    content:
+        "";
 
-    border: 1px solid rgba(255,255,255,0.04);
+    position:
+        absolute;
 
-    border-radius: 50%;
+    width:
+        72%;
 
-    transform: rotate(18deg);
+    height:
+        72%;
 
-    pointer-events: none;
+    left:
+        14%;
+
+    top:
+        14%;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.035
+        );
+
+    border-radius:
+        50%;
+
+    transform:
+        rotate(18deg);
+
+    pointer-events:
+        none;
 }
 
 .map::after {
-    content: "";
 
-    position: absolute;
-    inset: 18%;
+    content:
+        "";
 
-    border: 1px solid rgba(255,255,255,0.035);
+    position:
+        absolute;
 
-    border-radius: 50%;
+    width:
+        48%;
 
-    transform: rotate(-25deg);
+    height:
+        48%;
 
-    pointer-events: none;
+    left:
+        26%;
+
+    top:
+        26%;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.025
+        );
+
+    border-radius:
+        50%;
+
+    transform:
+        rotate(-25deg);
+
+    pointer-events:
+        none;
 }
 
-/* =========================
-   MONTH LABEL
-========================= */
 
-.month-label {
-    position: absolute;
+/* Month title */
 
-    top: 18px;
-    left: 22px;
+.map-month-title {
 
-    font-family: Arial, sans-serif;
-    font-size: 10px;
+    position:
+        absolute;
 
-    letter-spacing: 4px;
+    top:
+        22px;
 
-    text-transform: uppercase;
+    left:
+        28px;
 
-    opacity: 0.45;
+    z-index:
+        5;
 
-    z-index: 2;
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        4px;
+
+    opacity:
+        0.38;
+
+    text-transform:
+        uppercase;
 }
 
-/* =========================
+
+/* =====================================================
    SVG
-========================= */
+===================================================== */
 
 svg {
-    position: absolute;
 
-    width: 100%;
-    height: 100%;
+    position:
+        absolute;
 
-    inset: 0;
+    inset:
+        0;
 
-    overflow: visible;
+    width:
+        100%;
+
+    height:
+        100%;
+
+    overflow:
+        visible;
+
+    z-index:
+        3;
 }
 
-/* =========================
+
+/* =====================================================
    CONSTELLATION LINES
-========================= */
+===================================================== */
 
 .constellation-line {
-    stroke: rgba(220,215,255,0.3);
 
-    stroke-width: 1.2;
+    stroke:
+        rgba(
+            220,
+            215,
+            255,
+            0.36
+        );
 
-    stroke-dasharray: 2 5;
+    stroke-width:
+        1.25;
 
-    pointer-events: none;
-}
+    stroke-dasharray:
+        3 5;
 
-.constellation-line.main-line {
-    stroke: rgba(235,230,255,0.48);
+    vector-effect:
+        non-scaling-stroke;
 
-    stroke-width: 1.5;
+    pointer-events:
+        stroke;
 
-    stroke-dasharray: none;
-}
-
-/* =========================
-   STARS
-========================= */
-
-.star {
-    cursor: pointer;
-
-    transform-box: fill-box;
-    transform-origin: center;
+    cursor:
+        pointer;
 
     transition:
-        filter 0.18s ease,
-        opacity 0.18s ease;
+        0.15s ease;
+}
+
+.editing .constellation-line:hover {
+
+    stroke:
+        rgba(
+            255,
+            255,
+            255,
+            0.95
+        );
+
+    stroke-width:
+        2;
+}
+
+
+/* =====================================================
+   STAR
+===================================================== */
+
+.star {
+
+    transform-box:
+        fill-box;
+
+    transform-origin:
+        center;
+
+    cursor:
+        pointer;
+
+    /*
+       IMPORTANT:
+       No transform animation here.
+       This prevents the previous vibrating problem.
+    */
+
+    transition:
+        filter
+        0.15s
+        ease;
 }
 
 .star:hover {
+
     filter:
-        drop-shadow(0 0 7px currentColor)
-        drop-shadow(0 0 16px currentColor);
+
+        drop-shadow(
+            0 0 7px currentColor
+        )
+
+        drop-shadow(
+            0 0 17px currentColor
+        );
 }
 
-/* Prevent shaking / jumping */
-.star-group {
-    transform-box: fill-box;
-    transform-origin: center;
-}
 
-/* =========================
-   STAR LABEL
-========================= */
+/* Label only appears on hover */
 
 .star-label {
-    pointer-events: none;
 
-    font-family: Arial, sans-serif;
+    font-family:
+        Arial,
+        sans-serif;
 
-    font-size: 9px;
+    font-size:
+        9px;
 
-    fill: rgba(255,255,255,0.7);
+    letter-spacing:
+        1px;
 
-    letter-spacing: 0.5px;
+    fill:
+        rgba(
+            255,
+            255,
+            255,
+            0.78
+        );
+
+    pointer-events:
+        none;
+
+    opacity:
+        0;
+
+    transition:
+        opacity
+        0.15s
+        ease;
 }
 
-/* =========================
+.star:hover
+.star-label {
+
+    opacity:
+        1;
+}
+
+
+/* =====================================================
+   EDITOR
+===================================================== */
+
+.editor-panel {
+
+    display:
+        none;
+
+    width:
+        min(
+            1100px,
+            94vw
+        );
+
+    margin:
+        12px auto 0;
+
+    padding:
+        12px 14px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.035
+        );
+
+    border-radius:
+        10px;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        10px;
+
+    flex-wrap:
+        wrap;
+}
+
+.editor-panel.active {
+
+    display:
+        flex;
+}
+
+.editor-status {
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        1.5px;
+
+    opacity:
+        0.65;
+
+    text-transform:
+        uppercase;
+}
+
+.editor-hint {
+
+    font-size:
+        9px;
+
+    opacity:
+        0.38;
+
+    margin-top:
+        4px;
+}
+
+.editor-buttons {
+
+    display:
+        flex;
+
+    gap:
+        6px;
+
+    flex-wrap:
+        wrap;
+}
+
+.editor-button {
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.15
+        );
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.06
+        );
+
+    color:
+        white;
+
+    padding:
+        7px 12px;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        1px;
+
+    cursor:
+        pointer;
+}
+
+.editor-button:hover {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+}
+
+.editor-button.active {
+
+    background:
+        rgba(
+            120,
+            170,
+            255,
+            0.16
+        );
+
+    border-color:
+        rgba(
+            150,
+            190,
+            255,
+            0.4
+        );
+}
+
+.editing .star {
+
+    cursor:
+        grab;
+}
+
+.editing .star:active {
+
+    cursor:
+        grabbing;
+}
+
+.selected-star {
+
+    filter:
+
+        drop-shadow(
+            0 0 7px white
+        )
+
+        drop-shadow(
+            0 0 18px currentColor
+        );
+}
+
+
+/* =====================================================
    MODAL
-========================= */
+===================================================== */
 
 .modal {
-    position: fixed;
 
-    inset: 0;
+    position:
+        fixed;
 
-    display: none;
+    inset:
+        0;
 
-    align-items: center;
-    justify-content: center;
+    display:
+        none;
 
-    padding: 20px;
+    align-items:
+        center;
 
-    background: rgba(3,4,10,0.82);
+    justify-content:
+        center;
 
-    backdrop-filter: blur(8px);
+    padding:
+        20px;
 
-    z-index: 100;
+    background:
+        rgba(
+            3,
+            4,
+            10,
+            0.82
+        );
+
+    backdrop-filter:
+        blur(8px);
+
+    z-index:
+        100;
 }
 
 .modal.active {
-    display: flex;
+
+    display:
+        flex;
 }
 
-/* =========================
-   PROFILE
-========================= */
+
+/* Profile */
 
 .profile {
-    width: min(700px, 94vw);
 
-    display: grid;
+    width:
+        min(
+            720px,
+            94vw
+        );
 
-    grid-template-columns: 220px 1fr;
+    display:
+        grid;
 
-    position: relative;
+    grid-template-columns:
+        230px 1fr;
+
+    position:
+        relative;
 
     background:
+
         linear-gradient(
             135deg,
             #121426,
             #090b15
         );
 
-    border: 1px solid rgba(255,255,255,0.15);
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.15
+        );
 
     box-shadow:
-        0 30px 100px rgba(0,0,0,0.6);
+        0 30px 100px
+        rgba(
+            0,
+            0,
+            0,
+            0.6
+        );
 }
 
-/* =========================
-   PORTRAIT
-========================= */
+
+/* Portrait */
 
 .portrait {
-    min-height: 300px;
 
-    display: flex;
+    min-height:
+        310px;
 
-    align-items: center;
-    justify-content: center;
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    overflow:
+        hidden;
 
     background:
+
         radial-gradient(
             circle,
-            rgba(120,110,190,0.2),
+            rgba(
+                120,
+                110,
+                190,
+                0.2
+            ),
             transparent 60%
         ),
+
         #101321;
 
-    font-family: Arial, sans-serif;
-    font-size: 10px;
+    font-family:
+        Arial,
+        sans-serif;
 
-    letter-spacing: 2px;
+    font-size:
+        9px;
 
-    color: rgba(255,255,255,0.35);
+    letter-spacing:
+        2px;
 
-    overflow: hidden;
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.35
+        );
 }
 
 .portrait img {
-    width: 100%;
-    height: 100%;
 
-    object-fit: cover;
+    width:
+        100%;
 
-    display: block;
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+    display:
+        none;
 }
 
-/* =========================
-   DATA-ONLY PROFILE
-========================= */
+.portrait.has-image
+img {
 
-.profile.data-only {
-    display: block;
-
-    width: min(500px, 90vw);
+    display:
+        block;
 }
 
-.profile.data-only .profile-content {
-    padding: 40px;
+.portrait.has-image
+.portrait-placeholder {
+
+    display:
+        none;
 }
 
-.profile.data-only .portrait {
-    display: none;
-}
 
-/* =========================
-   PROFILE CONTENT
-========================= */
+/* Profile content */
 
 .profile-content {
-    padding: 40px;
+
+    padding:
+        40px;
 }
 
 .close {
-    position: absolute;
 
-    right: 14px;
-    top: 8px;
+    position:
+        absolute;
 
-    border: none;
-    background: none;
+    right:
+        14px;
 
-    color: white;
+    top:
+        9px;
 
-    font-size: 24px;
+    border:
+        none;
 
-    opacity: 0.6;
+    background:
+        none;
 
-    cursor: pointer;
+    color:
+        white;
 
-    z-index: 5;
+    font-size:
+        24px;
+
+    opacity:
+        0.55;
+
+    cursor:
+        pointer;
 }
 
 .rank {
-    font-family: Arial, sans-serif;
 
-    font-size: 9px;
+    font-family:
+        Arial,
+        sans-serif;
 
-    letter-spacing: 2px;
+    font-size:
+        9px;
 
-    opacity: 0.5;
+    letter-spacing:
+        2px;
 
-    text-transform: uppercase;
+    opacity:
+        0.45;
+
+    text-transform:
+        uppercase;
 }
 
 .profile h2 {
-    margin: 9px 0;
 
-    font-size: 28px;
+    margin:
+        9px 0 17px;
 
-    font-weight: normal;
+    font-size:
+        30px;
 
-    letter-spacing: 2px;
+    font-weight:
+        normal;
+
+    letter-spacing:
+        2px;
 }
 
 .profile-info {
-    font-family: Arial, sans-serif;
 
-    font-size: 11px;
+    font-family:
+        Arial,
+        sans-serif;
 
-    line-height: 1.9;
+    font-size:
+        11px;
 
-    opacity: 0.65;
+    line-height:
+        1.9;
+
+    opacity:
+        0.65;
 }
 
 .quote {
-    margin-top: 20px;
 
-    padding-top: 15px;
+    margin-top:
+        23px;
 
-    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top:
+        16px;
 
-    font-style: italic;
+    border-top:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
 
-    font-size: 12px;
+    font-style:
+        italic;
 
-    opacity: 0.65;
+    font-size:
+        13px;
+
+    opacity:
+        0.6;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 
-@media(max-width: 650px) {
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:650px) {
 
     .archive {
-        padding: 25px 15px;
+
+        padding:
+            22px 12px 30px;
     }
 
-    .map-container {
-        aspect-ratio: 4 / 3;
+    .month-tab {
+
+        padding:
+            6px 9px;
+
+        font-size:
+            8px;
     }
 
     .profile {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
     }
 
     .portrait {
-        min-height: 190px;
+
+        min-height:
+            190px;
+
+        max-height:
+            240px;
     }
 
     .profile-content {
-        padding: 28px;
-    }
-}
-</style>
-</head>
 
+        padding:
+            28px;
+    }
+
+}
+
+</style>
+
+</head>
 
 <body>
 
 <div class="archive">
 
-    <!-- =====================
-         HEADER
-    ====================== -->
+<!-- =================================================
+     HEADER
+================================================== -->
 
-    <header>
+<header>
 
-        <div class="kicker">
-            Astronomical Student Archive
-        </div>
+```
+<div class="kicker">
+    Astronomical Student Archive
+</div>
 
-        <h1>
-            THE CELESTIAL ARCHIVE
-        </h1>
+<h1>
+    THE CELESTIAL ARCHIVE
+</h1>
 
-        <div class="subtitle">
-            A record of stars that crossed the classroom sky.
-        </div>
+<div class="subtitle">
+    A record of stars that crossed the classroom sky.
+</div>
+```
 
-    </header>
+</header>
 
+<!-- =================================================
+     CYCLE
+================================================== -->
 
-    <!-- =====================
-         CYCLE NAVIGATION
-    ====================== -->
+<div class="cycle-navigation">
 
-    <div class="cycle-navigation">
-
-        <button
-            class="nav-button"
-            id="previous">
-            ‹
-        </button>
-
-        <div class="cycle-title">
-
-            <strong id="cycle-name">
-                CELESTIAL CYCLE I
-            </strong>
-
-            <span id="cycle-date">
-                June — November 2026
-            </span>
-
-        </div>
-
-        <button
-            class="nav-button"
-            id="next">
-            ›
-        </button>
-
-    </div>
+```
+<button
+    class="nav-button"
+    id="previous">
+    ‹
+</button>
 
 
-    <!-- =====================
-         MONTH SUB TABS
-    ====================== -->
+<div class="cycle-title">
+
+    <strong id="cycle-name">
+        CELESTIAL CYCLE I
+    </strong>
+
+    <span id="cycle-date">
+        June — November 2026
+    </span>
+
+</div>
+
+
+<button
+    class="nav-button"
+    id="next">
+    ›
+</button>
+```
+
+</div>
+
+<!-- =================================================
+     MONTH TABS
+================================================== -->
+
+<div
+    class="month-tabs"
+    id="month-tabs">
+</div>
+
+<!-- =================================================
+     MAP
+================================================== -->
+
+<div class="map-container">
+
+```
+<div class="map">
 
     <div
-        class="month-tabs"
-        id="month-tabs">
+        class="map-month-title"
+        id="map-month-title">
+        June · Ursa Minor
     </div>
 
 
-    <!-- =====================
-         MAP
-    ====================== -->
+    <svg
+        id="constellation"
+        viewBox="0 0 1000 562.5"
+        preserveAspectRatio="none">
+    </svg>
 
-    <div class="map-container">
+</div>
+```
 
-        <div class="map">
+</div>
 
-            <div
-                class="month-label"
-                id="month-label">
-                June
-            </div>
+<!-- =================================================
+     EDITOR
+================================================== -->
 
+<div
+    class="editor-panel"
+    id="editor-panel">
 
-            <svg
-                id="constellation"
-                viewBox="0 0 1000 600"
-                preserveAspectRatio="none">
-            </svg>
+```
+<div>
 
-        </div>
+    <div class="editor-status">
+        ✦ Constellation Editor
+    </div>
 
+    <div class="editor-hint">
+        Drag stars · Add Line: click two stars · Click a line to delete it
     </div>
 
 </div>
 
 
-<!-- =========================
+<div class="editor-buttons">
+
+    <button
+        class="editor-button"
+        id="add-line">
+
+        ＋ ADD LINE
+
+    </button>
+
+
+    <button
+        class="editor-button"
+        id="reset-lines">
+
+        RESET LINES
+
+    </button>
+
+
+    <button
+        class="editor-button"
+        id="reset-editor">
+
+        RESET ALL
+
+    </button>
+
+
+    <button
+        class="editor-button"
+        id="copy-data">
+
+        COPY DATA
+
+    </button>
+
+
+    <button
+        class="editor-button"
+        id="exit-editor">
+
+        EXIT
+
+    </button>
+
+</div>
+```
+
+</div>
+
+</div>
+
+<!-- =================================================
      PROFILE MODAL
-========================= -->
+================================================== -->
 
 <div
     class="modal"
     id="modal">
 
+```
+<div class="profile">
+
+
+    <button
+        class="close"
+        id="close">
+
+        ×
+
+    </button>
+
+
     <div
-        class="profile"
-        id="profile">
-
-        <button
-            class="close"
-            id="close">
-            ×
-        </button>
+        class="portrait"
+        id="portrait">
 
 
-        <div
-            class="portrait"
-            id="portrait">
-        </div>
+        <img
+            id="portrait-image"
+            alt="Student portrait">
 
 
-        <div class="profile-content">
+        <span
+            class="portrait-placeholder">
 
-            <div
-                class="rank"
-                id="profile-rank">
-            </div>
+            STUDENT PORTRAIT
 
-            <h2
-                id="profile-name">
-            </h2>
+        </span>
 
-            <div
-                class="profile-info"
-                id="profile-info">
-            </div>
-
-            <div
-                class="quote"
-                id="profile-quote">
-            </div>
-
-        </div>
 
     </div>
 
-</div>
 
+    <div class="profile-content">
+
+
+        <div
+            class="rank"
+            id="profile-rank">
+        </div>
+
+
+        <h2
+            id="profile-name">
+        </h2>
+
+
+        <div
+            class="profile-info"
+            id="profile-info">
+        </div>
+
+
+        <div
+            class="quote"
+            id="profile-quote">
+        </div>
+
+
+    </div>
+
+
+</div>
+```
+
+</div>
 
 <script>
 
+
 /* =====================================================
-   CYCLE DATA
+   CYCLES
+
+   ONE CYCLE = SIX MONTHS
 ===================================================== */
 
 const cycles = [
 
     {
-        name: "CELESTIAL CYCLE I",
-        date: "June — November 2026",
+
+        name:
+            "CELESTIAL CYCLE I",
+
+        date:
+            "June — November 2026",
 
         months: [
+
             "June",
             "July",
             "August",
             "September",
             "October",
             "November"
+
         ]
 
     }
@@ -747,246 +1548,380 @@ const cycles = [
 ];
 
 
+let currentCycle =
+    0;
+
+
+let currentMonth =
+    "June";
+
+
 /* =====================================================
-   CURRENT STATE
-===================================================== */
-
-let currentCycle = 0;
-let currentMonth = "June";
-
-
-/* =====================================================
-   STUDENT DATA
-=====================================================
-
-   RANK 1–3
-   → photo supported
-
-   RANK 0
-   → NO PHOTO
-
+   STUDENTS — JUNE
 ===================================================== */
 
 const students = [
 
-    /* =========================
-       JUNE
-    ========================= */
+
+    /* =================================================
+       RANK 1
+    ================================================= */
 
     {
-        name: "Nicholette Rhodes",
-        month: "June",
-        rank: 1,
 
-        type: "B",
-        temperature: "10,000–30,000 K",
+        name:
+            "Nicholette Rhodes",
 
-        identity: "Rank I · Celestial Archive",
+        month:
+            "June",
 
-        quote: "A bright star anchoring the June constellation.",
+        rank:
+            1,
 
-        photo: "",
+        type:
+            "BLUE",
 
-        x: 245,
-        y: 145
-    },
+        identity:
+            "Rank I · June 2026",
 
-    {
-        name: "Naja Kusunoki",
-        month: "June",
-        rank: 2,
+        photo:
+            "images/nicholette.jpg",
 
-        type: "K",
-        temperature: "3,700–5,200 K",
+        quote:
+            "A brilliant northern light.",
 
-        identity: "Rank II · Celestial Archive",
+        /*
+           URSA MINOR POSITION
+        */
 
-        quote: "A warm light along the constellation's curve.",
+        x:
+            820,
 
-        photo: "",
+        y:
+            115
 
-        x: 390,
-        y: 235
-    },
-
-    {
-        name: "Kasper Alain Goth",
-        month: "June",
-        rank: 3,
-
-        type: "M",
-        temperature: "2,400–3,700 K",
-
-        identity: "Rank III · Celestial Archive",
-
-        quote: "A red ember completing the lower arc.",
-
-        photo: "",
-
-        x: 540,
-        y: 380
     },
 
 
-    /* =========================
-       URSA MINOR
-       MAIN STARS
-    ========================= */
+    /* =================================================
+       RANK 2
+    ================================================= */
 
     {
-        name: "Stella Hearts2Hearts",
-        month: "June",
-        rank: 0,
 
-        type: "B",
-        temperature: "10,000–30,000 K",
+        name:
+            "Naja Kusunoki",
 
-        identity: "Recorded Star · June 2026",
+        month:
+            "June",
 
-        quote: "",
+        rank:
+            2,
 
-        photo: "",
+        type:
+            "ORANGE",
 
-        x: 150,
-        y: 170
-    },
+        identity:
+            "Rank II · June 2026",
 
-    {
-        name: "Seunghyeon Cortis",
-        month: "June",
-        rank: 0,
+        photo:
+            "images/naja.jpg",
 
-        type: "B",
-        temperature: "10,000–30,000 K",
+        quote:
+            "A warm guardian of the northern bowl.",
 
-        identity: "Recorded Star · June 2026",
+        x:
+            330,
 
-        quote: "",
+        y:
+            285
 
-        photo: "",
-
-        x: 245,
-        y: 145
-    },
-
-    {
-        name: "Karina",
-        month: "June",
-        rank: 0,
-
-        type: "A",
-        temperature: "7,500–10,000 K",
-
-        identity: "Recorded Star · June 2026",
-
-        quote: "",
-
-        photo: "",
-
-        x: 390,
-        y: 235
-    },
-
-    {
-        name: "Jeong Saebi IZNA",
-        month: "June",
-        rank: 0,
-
-        type: "F",
-        temperature: "6,000–7,500 K",
-
-        identity: "Recorded Star · June 2026",
-
-        quote: "",
-
-        photo: "",
-
-        x: 540,
-        y: 380
-    },
-
-    {
-        name: "Lee Dain",
-        month: "June",
-        rank: 0,
-
-        type: "G",
-        temperature: "5,200–6,000 K",
-
-        identity: "Recorded Star · June 2026",
-
-        quote: "",
-
-        photo: "",
-
-        x: 630,
-        y: 315
-    },
-
-    {
-        name: "Park Minju",
-        month: "June",
-        rank: 0,
-
-        type: "K",
-        temperature: "3,700–5,200 K",
-
-        identity: "Recorded Star · June 2026",
-
-        quote: "",
-
-        photo: "",
-
-        x: 470,
-        y: 210
-    },
-
-    {
-        name: "Juun H2H",
-        month: "June",
-        rank: 0,
-
-        type: "M",
-        temperature: "2,400–3,700 K",
-
-        identity: "Recorded Star · June 2026",
-
-        quote: "",
-
-        photo: "",
-
-        x: 345,
-        y: 330
     },
 
 
-    /* =========================
-       FUTURE MONTHS
-       =========================
-       Tinggal ditambahkan nanti.
-    ========================= */
+    /* =================================================
+       RANK 3
+    ================================================= */
+
+    {
+
+        name:
+            "Kasper Alain Goth",
+
+        month:
+            "June",
+
+        rank:
+            3,
+
+        type:
+            "RED",
+
+        identity:
+            "Rank III · June 2026",
+
+        photo:
+            "images/kasper.jpg",
+
+        quote:
+            "A vivid point along the Little Dipper.",
+
+        x:
+            430,
+
+        y:
+            225
+
+    },
+
+
+    /* =================================================
+       RANK 0
+    ================================================= */
+
+    {
+
+        name:
+            "Stella Hearts2Hearts",
+
+        month:
+            "June",
+
+        rank:
+            0,
+
+        type:
+            "WHITE",
+
+        identity:
+            "Recorded Star · Hearts2Hearts",
+
+        photo:
+            "",
+
+        quote:
+            "",
+
+        x:
+            650,
+
+        y:
+            175
+
+    },
+
+
+    {
+
+        name:
+            "Seunghyeon Cortis",
+
+        month:
+            "June",
+
+        rank:
+            0,
+
+        type:
+            "WHITE",
+
+        identity:
+            "Recorded Star · CORTIS",
+
+        photo:
+            "",
+
+        quote:
+            "",
+
+        x:
+            555,
+
+        y:
+            205
+
+    },
+
+
+    {
+
+        name:
+            "Karina",
+
+        month:
+            "June",
+
+        rank:
+            0,
+
+        type:
+            "WHITE",
+
+        identity:
+            "Recorded Star · June Archive",
+
+        photo:
+            "",
+
+        quote:
+            "",
+
+        x:
+            300,
+
+        y:
+            375
+
+    },
+
+
+    {
+
+        name:
+            "Jeong Saebi IZNA",
+
+        month:
+            "June",
+
+        rank:
+            0,
+
+        type:
+            "WHITE",
+
+        identity:
+            "Recorded Star · izna",
+
+        photo:
+            "",
+
+        quote:
+            "",
+
+        x:
+            405,
+
+        y:
+            410
+
+    },
+
+
+    {
+
+        name:
+            "Lee Dain",
+
+        month:
+            "June",
+
+        rank:
+            0,
+
+        type:
+            "WHITE",
+
+        identity:
+            "Recorded Star · June Archive",
+
+        photo:
+            "",
+
+        quote:
+            "",
+
+        x:
+            690,
+
+        y:
+            270
+
+    },
+
+
+    {
+
+        name:
+            "Park Minju",
+
+        month:
+            "June",
+
+        rank:
+            0,
+
+        type:
+            "WHITE",
+
+        identity:
+            "Recorded Star · June Archive",
+
+        photo:
+            "",
+
+        quote:
+            "",
+
+        x:
+            230,
+
+        y:
+            325
+
+    },
+
+
+    {
+
+        name:
+            "Juun H2H",
+
+        month:
+            "June",
+
+        rank:
+            0,
+
+        type:
+            "WHITE",
+
+        identity:
+            "Recorded Star · Hearts2Hearts",
+
+        photo:
+            "",
+
+        quote:
+            "",
+
+        x:
+            520,
+
+        y:
+            350
+
+    }
 
 ];
 
 
 /* =====================================================
    STELLAR COLORS
-
-   Bright stars deliberately use
-   BLUE / ORANGE / RED.
 ===================================================== */
 
 const stellarColors = {
 
-    O: "#7fb8ff",
-    B: "#65a9ff",
-    A: "#9ecbff",
+    BLUE:
+        "#78a9ff",
 
-    F: "#ffd27a",
-    G: "#ffb347",
-    K: "#ff914d",
+    ORANGE:
+        "#ff9d5c",
 
-    M: "#ff5c5c"
+    RED:
+        "#ff625c",
+
+    WHITE:
+        "#eeeaff"
 
 };
 
@@ -994,32 +1929,46 @@ const stellarColors = {
 /* =====================================================
    CONSTELLATION CONNECTIONS
 
-   June → Ursa Minor structure
+   IMPORTANT:
+   The order here does NOT determine star position.
 
-   Format:
-   [star index A, star index B]
+   It only determines which stars are connected.
 
-   Ini yang nantinya paling gampang
-   diedit untuk bulan berikutnya.
 ===================================================== */
 
-const constellationConnections = {
+const constellationLines = {
 
     June: [
 
-        /* Main Ursa Minor chain */
+        [
+            "Nicholette Rhodes",
+            "Stella Hearts2Hearts"
+        ],
 
-        [0, 1],
-        [1, 2],
-        [2, 3],
-        [3, 4],
-        [4, 5],
-        [5, 6],
+        [
+            "Stella Hearts2Hearts",
+            "Seunghyeon Cortis"
+        ],
 
-        /* Supporting structure */
+        [
+            "Seunghyeon Cortis",
+            "Kasper Alain Goth"
+        ],
 
-        [6, 7],
-        [2, 6]
+        [
+            "Kasper Alain Goth",
+            "Naja Kusunoki"
+        ],
+
+        [
+            "Naja Kusunoki",
+            "Karina"
+        ],
+
+        [
+            "Karina",
+            "Jeong Saebi IZNA"
+        ]
 
     ]
 
@@ -1027,51 +1976,113 @@ const constellationConnections = {
 
 
 /* =====================================================
-   MONTH TABS
+   SAVE ORIGINAL DATA
 ===================================================== */
 
-function renderMonthTabs() {
+const originalLines =
+    JSON.parse(
+        JSON.stringify(
+            constellationLines
+        )
+    );
 
-    const tabs =
-        document.getElementById("month-tabs");
 
-    tabs.innerHTML = "";
+const originalPositions =
+    students.map(
+        student => ({
 
-    const months =
-        cycles[currentCycle].months;
+            name:
+                student.name,
 
-    months.forEach(month => {
+            x:
+                student.x,
 
-        const button =
-            document.createElement("button");
+            y:
+                student.y
 
-        button.className =
-            "month-tab";
+        })
+    );
 
-        if (month === currentMonth) {
 
-            button.classList.add("active");
+/* =====================================================
+   EDIT MODE
 
-        }
+   Open with:
 
-        button.textContent =
-            month;
+   ?edit=true
 
-        button.addEventListener(
-            "click",
-            () => {
+===================================================== */
 
-                currentMonth = month;
+const editMode =
 
-                renderMonthTabs();
-                renderMonth();
+    new URLSearchParams(
+        window.location.search
+    ).get("edit") === "true";
 
-            }
-        );
 
-        tabs.appendChild(button);
+let addingLine =
+    false;
 
-    });
+
+let selectedStar =
+    null;
+
+
+let draggedStar =
+    null;
+
+
+let pointerOffsetX =
+    0;
+
+
+let pointerOffsetY =
+    0;
+
+
+/* =====================================================
+   DOM
+===================================================== */
+
+const svg =
+    document.getElementById(
+        "constellation"
+    );
+
+
+const monthTabs =
+    document.getElementById(
+        "month-tabs"
+    );
+
+
+const mapMonthTitle =
+    document.getElementById(
+        "map-month-title"
+    );
+
+
+const editorPanel =
+    document.getElementById(
+        "editor-panel"
+    );
+
+
+const addLineButton =
+    document.getElementById(
+        "add-line"
+    );
+
+
+if (editMode) {
+
+    document.body.classList.add(
+        "editing"
+    );
+
+    editorPanel.classList.add(
+        "active"
+    );
 
 }
 
@@ -1080,50 +2091,75 @@ function renderMonthTabs() {
    DRAW CONSTELLATION
 ===================================================== */
 
-const svg =
-    document.getElementById("constellation");
-
-
 function drawConstellation() {
 
-    svg.innerHTML = "";
+
+    /*
+       Only clear the SVG when drawing.
+
+       Dragging itself no longer calls this function.
+       This fixes the vibrating / disappearing problem.
+    */
+
+    svg.innerHTML =
+        "";
 
 
     const monthStudents =
-        students
-            .map((student, index) => ({
-                ...student,
-                index
-            }))
-            .filter(
-                student =>
-                    student.month === currentMonth
+
+        students.filter(
+            student =>
+                student.month ===
+                currentMonth
+        );
+
+
+    const studentMap =
+        new Map();
+
+
+    monthStudents.forEach(
+        student => {
+
+            studentMap.set(
+                student.name,
+                student
             );
 
+        }
+    );
 
-    const connections =
-        constellationConnections[currentMonth] || [];
+
+    const lines =
+
+        constellationLines[
+            currentMonth
+        ] || [];
 
 
-    /* =========================
+    /* =================================================
        DRAW LINES FIRST
-    ========================= */
+    ================================================= */
 
-    connections.forEach(
-        connection => {
+    lines.forEach(
+        (connection, index) => {
+
 
             const studentA =
-                students[connection[0]];
+                studentMap.get(
+                    connection[0]
+                );
+
 
             const studentB =
-                students[connection[1]];
+                studentMap.get(
+                    connection[1]
+                );
 
 
             if (
                 !studentA ||
-                !studentB ||
-                studentA.month !== currentMonth ||
-                studentB.month !== currentMonth
+                !studentB
             ) {
 
                 return;
@@ -1132,6 +2168,7 @@ function drawConstellation() {
 
 
             const line =
+
                 document.createElementNS(
                     "http://www.w3.org/2000/svg",
                     "line"
@@ -1143,15 +2180,18 @@ function drawConstellation() {
                 studentA.x
             );
 
+
             line.setAttribute(
                 "y1",
                 studentA.y
             );
 
+
             line.setAttribute(
                 "x2",
                 studentB.x
             );
+
 
             line.setAttribute(
                 "y2",
@@ -1159,31 +2199,60 @@ function drawConstellation() {
             );
 
 
-            /*
-               Main constellation lines
-               are visually stronger.
-            */
-
-            line.classList.add(
-                "constellation-line",
-                "main-line"
+            line.setAttribute(
+                "class",
+                "constellation-line"
             );
 
 
-            svg.appendChild(line);
+            /*
+               EDIT MODE:
+               clicking a line deletes it.
+            */
+
+            if (editMode) {
+
+                line.addEventListener(
+                    "click",
+                    event => {
+
+                        event.stopPropagation();
+
+
+                        constellationLines[
+                            currentMonth
+                        ].splice(
+                            index,
+                            1
+                        );
+
+
+                        drawConstellation();
+
+                    }
+                );
+
+            }
+
+
+            svg.appendChild(
+                line
+            );
 
         }
     );
 
 
-    /* =========================
+    /* =================================================
        DRAW STARS
-    ========================= */
+    ================================================= */
 
     monthStudents.forEach(
         student => {
 
+
             const group =
+
                 document.createElementNS(
                     "http://www.w3.org/2000/svg",
                     "g"
@@ -1192,25 +2261,32 @@ function drawConstellation() {
 
             group.setAttribute(
                 "class",
-                "star star-group"
+                "star"
             );
 
 
             group.style.color =
-                stellarColors[student.type];
+
+                stellarColors[
+                    student.type
+                ];
 
 
             group.setAttribute(
                 "transform",
-                `translate(${student.x}, ${student.y})`
+                `translate(
+                    ${student.x},
+                    ${student.y}
+                )`
             );
 
 
-            /* =====================
+            /* =================================================
                GLOW
-            ===================== */
+            ================================================= */
 
             const glow =
+
                 document.createElementNS(
                     "http://www.w3.org/2000/svg",
                     "circle"
@@ -1218,10 +2294,14 @@ function drawConstellation() {
 
 
             const glowRadius =
-                student.rank === 1 ? 18 :
-                student.rank === 2 ? 14 :
-                student.rank === 3 ? 12 :
-                9;
+
+                student.rank === 1
+                    ? 19
+                    : student.rank === 2
+                    ? 15
+                    : student.rank === 3
+                    ? 13
+                    : 8;
 
 
             glow.setAttribute(
@@ -1232,23 +2312,26 @@ function drawConstellation() {
 
             glow.setAttribute(
                 "fill",
-                stellarColors[student.type]
+                stellarColors[
+                    student.type
+                ]
             );
 
 
             glow.setAttribute(
                 "opacity",
                 student.rank
-                    ? "0.18"
-                    : "0.06"
+                    ? "0.17"
+                    : "0.055"
             );
 
 
-            /* =====================
-               STAR
-            ===================== */
+            /* =================================================
+               ACTUAL STAR
+            ================================================= */
 
             const star =
+
                 document.createElementNS(
                     "http://www.w3.org/2000/svg",
                     "circle"
@@ -1256,10 +2339,14 @@ function drawConstellation() {
 
 
             const starRadius =
-                student.rank === 1 ? 8 :
-                student.rank === 2 ? 6 :
-                student.rank === 3 ? 5 :
-                3.5;
+
+                student.rank === 1
+                    ? 8
+                    : student.rank === 2
+                    ? 6.5
+                    : student.rank === 3
+                    ? 5.5
+                    : 3.3;
 
 
             star.setAttribute(
@@ -1270,13 +2357,15 @@ function drawConstellation() {
 
             star.setAttribute(
                 "fill",
-                stellarColors[student.type]
+                stellarColors[
+                    student.type
+                ]
             );
 
 
             star.setAttribute(
                 "stroke",
-                "rgba(255,255,255,0.8)"
+                "rgba(255,255,255,0.85)"
             );
 
 
@@ -1286,49 +2375,123 @@ function drawConstellation() {
             );
 
 
-            group.appendChild(glow);
-            group.appendChild(star);
+            /* =================================================
+               HOVER NAME
+            ================================================= */
 
+            const label =
 
-            /* =====================
-               HOVER TOOLTIP
-            ===================== */
-
-            const title =
                 document.createElementNS(
                     "http://www.w3.org/2000/svg",
-                    "title"
+                    "text"
                 );
 
 
-            title.textContent =
-                `${student.name} · ${
-                    student.rank
-                        ? `Rank ${student.rank}`
-                        : "Recorded Star"
-                }`;
+            label.setAttribute(
+                "class",
+                "star-label"
+            );
 
 
-            group.appendChild(title);
+            label.setAttribute(
+                "x",
+                "11"
+            );
 
 
-            /* =====================
+            label.setAttribute(
+                "y",
+                "3"
+            );
+
+
+            label.textContent =
+                student.name;
+
+
+            group.appendChild(
+                glow
+            );
+
+
+            group.appendChild(
+                star
+            );
+
+
+            group.appendChild(
+                label
+            );
+
+
+            /* =================================================
+               EDITOR DRAG
+            ================================================= */
+
+            if (editMode) {
+
+                setupDragging(
+                    group,
+                    student
+                );
+
+            }
+
+
+            /* =================================================
                CLICK
-            ===================== */
+            ================================================= */
 
             group.addEventListener(
                 "click",
                 event => {
 
+
                     event.stopPropagation();
 
-                    openProfile(student);
+
+                    /*
+                       In edit mode,
+                       clicking a star is only used
+                       for line creation.
+                    */
+
+                    if (editMode) {
+
+
+                        if (
+                            addingLine
+                        ) {
+
+                            selectStarForLine(
+                                student,
+                                group
+                            );
+
+                        }
+
+
+                        return;
+
+                    }
+
+
+                    /*
+                       Normal mode:
+                       open profile.
+                    */
+
+                    openProfile(
+                        student
+                    );
 
                 }
             );
 
 
-            svg.appendChild(group);
+            svg.appendChild(
+                group
+            );
 
         }
     );
@@ -1337,15 +2500,461 @@ function drawConstellation() {
 
 
 /* =====================================================
-   RENDER MONTH
+   DRAGGING
 ===================================================== */
 
-function renderMonth() {
+function setupDragging(
+    group,
+    student
+) {
 
-    document.getElementById(
-        "month-label"
-    ).textContent =
-        currentMonth;
+
+    group.addEventListener(
+        "pointerdown",
+        event => {
+
+
+            /*
+               Do not drag while
+               adding a line.
+            */
+
+            if (
+                addingLine
+            ) {
+
+                return;
+
+            }
+
+
+            event.preventDefault();
+
+
+            draggedStar =
+                student;
+
+
+            group.setPointerCapture(
+                event.pointerId
+            );
+
+
+        }
+    );
+
+
+    group.addEventListener(
+        "pointermove",
+        event => {
+
+
+            if (
+                draggedStar !==
+                student
+            ) {
+
+                return;
+
+            }
+
+
+            const rect =
+                svg.getBoundingClientRect();
+
+
+            let x =
+
+                (
+                    event.clientX -
+                    rect.left
+                )
+                *
+                (
+                    1000 /
+                    rect.width
+                );
+
+
+            let y =
+
+                (
+                    event.clientY -
+                    rect.top
+                )
+                *
+                (
+                    562.5 /
+                    rect.height
+                );
+
+
+            /*
+               Keep stars inside map.
+            */
+
+            x =
+                Math.max(
+                    20,
+                    Math.min(
+                        980,
+                        x
+                    )
+                );
+
+
+            y =
+                Math.max(
+                    20,
+                    Math.min(
+                        542,
+                        y
+                    )
+                );
+
+
+            student.x =
+                Math.round(
+                    x
+                );
+
+
+            student.y =
+                Math.round(
+                    y
+                );
+
+
+            /*
+               IMPORTANT:
+
+               Move only this group.
+
+               DO NOT redraw SVG here.
+            */
+
+            group.setAttribute(
+                "transform",
+                `translate(
+                    ${student.x},
+                    ${student.y}
+                )`
+            );
+
+
+            /*
+               Update all constellation lines
+               connected to this star.
+            */
+
+            updateConnectedLines(
+                student
+            );
+
+        }
+    );
+
+
+    group.addEventListener(
+        "pointerup",
+        event => {
+
+
+            draggedStar =
+                null;
+
+
+            try {
+
+                group.releasePointerCapture(
+                    event.pointerId
+                );
+
+            } catch (error) {}
+
+        }
+    );
+
+
+    group.addEventListener(
+        "pointercancel",
+        () => {
+
+            draggedStar =
+                null;
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   UPDATE CONNECTED LINES WHILE DRAGGING
+===================================================== */
+
+function updateConnectedLines(
+    movedStudent
+) {
+
+
+    const lines =
+        constellationLines[
+            currentMonth
+        ] || [];
+
+
+    const svgLines =
+        svg.querySelectorAll(
+            ".constellation-line"
+        );
+
+
+    lines.forEach(
+        (connection, index) => {
+
+
+            if (
+
+                connection[0] !==
+                    movedStudent.name &&
+
+                connection[1] !==
+                    movedStudent.name
+
+            ) {
+
+                return;
+
+            }
+
+
+            const line =
+                svgLines[
+                    index
+                ];
+
+
+            if (!line) {
+
+                return;
+
+            }
+
+
+            const studentA =
+                students.find(
+                    student =>
+                        student.name ===
+                        connection[0]
+                );
+
+
+            const studentB =
+                students.find(
+                    student =>
+                        student.name ===
+                        connection[1]
+                );
+
+
+            if (!studentA || !studentB) {
+
+                return;
+
+            }
+
+
+            line.setAttribute(
+                "x1",
+                studentA.x
+            );
+
+
+            line.setAttribute(
+                "y1",
+                studentA.y
+            );
+
+
+            line.setAttribute(
+                "x2",
+                studentB.x
+            );
+
+
+            line.setAttribute(
+                "y2",
+                studentB.y
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   ADD LINE
+===================================================== */
+
+addLineButton.addEventListener(
+    "click",
+    () => {
+
+
+        addingLine =
+            !addingLine;
+
+
+        selectedStar =
+            null;
+
+
+        addLineButton.classList.toggle(
+            "active",
+            addingLine
+        );
+
+
+        addLineButton.textContent =
+
+            addingLine
+                ? "✓ SELECT STARS"
+                : "＋ ADD LINE";
+
+
+        drawConstellation();
+
+    }
+);
+
+
+/* =====================================================
+   SELECT STARS FOR LINE
+===================================================== */
+
+function selectStarForLine(
+    student,
+    group
+) {
+
+
+    /*
+       First star.
+    */
+
+    if (
+        !selectedStar
+    ) {
+
+        selectedStar =
+            student;
+
+
+        group.classList.add(
+            "selected-star"
+        );
+
+
+        return;
+
+    }
+
+
+    /*
+       Same star = cancel.
+    */
+
+    if (
+        selectedStar.name ===
+        student.name
+    ) {
+
+        selectedStar =
+            null;
+
+
+        drawConstellation();
+
+        return;
+
+    }
+
+
+    /*
+       Make sure array exists.
+    */
+
+    if (
+        !constellationLines[
+            currentMonth
+        ]
+    ) {
+
+        constellationLines[
+            currentMonth
+        ] = [];
+
+    }
+
+
+    /*
+       Check duplicate.
+    */
+
+    const exists =
+
+        constellationLines[
+            currentMonth
+        ].some(
+            connection =>
+
+                (
+
+                    connection[0] ===
+                    selectedStar.name &&
+
+                    connection[1] ===
+                    student.name
+
+                )
+
+                ||
+
+                (
+
+                    connection[0] ===
+                    student.name &&
+
+                    connection[1] ===
+                    selectedStar.name
+
+                )
+        );
+
+
+    /*
+       Add connection.
+    */
+
+    if (!exists) {
+
+        constellationLines[
+            currentMonth
+        ].push([
+
+            selectedStar.name,
+
+            student.name
+
+        ]);
+
+    }
+
+
+    selectedStar =
+        null;
 
 
     drawConstellation();
@@ -1354,13 +2963,591 @@ function renderMonth() {
 
 
 /* =====================================================
-   CYCLE NAVIGATION
+   COPY DATA
 ===================================================== */
+
+document
+    .getElementById(
+        "copy-data"
+    )
+    .addEventListener(
+        "click",
+        async () => {
+
+
+            let output =
+
+                `/* ${currentMonth.toUpperCase()} */\n\n`;
+
+
+            output +=
+                "STARS:\n\n";
+
+
+            students
+                .filter(
+                    student =>
+                        student.month ===
+                        currentMonth
+                )
+                .forEach(
+                    student => {
+
+
+                        output +=
+
+`{
+    name: "${student.name}",
+    x: ${student.x},
+    y: ${student.y}
+},
+
+`;
+
+                    }
+                );
+
+
+            output +=
+                "\nLINES:\n\n";
+
+
+            (
+                constellationLines[
+                    currentMonth
+                ] || []
+            )
+            .forEach(
+                line => {
+
+
+                    output +=
+
+`[
+    "${line[0]}",
+    "${line[1]}"
+],
+
+`;
+
+                }
+            );
+
+
+            try {
+
+                await navigator.clipboard.writeText(
+                    output
+                );
+
+
+                alert(
+                    "Star positions and constellation lines copied!"
+                );
+
+
+            } catch (error) {
+
+                alert(
+                    output
+                );
+
+            }
+
+        }
+    );
+
+
+/* =====================================================
+   RESET LINES
+===================================================== */
+
+document
+    .getElementById(
+        "reset-lines"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+
+            constellationLines[
+                currentMonth
+            ] =
+
+                JSON.parse(
+                    JSON.stringify(
+                        originalLines[
+                            currentMonth
+                        ] || []
+                    )
+                );
+
+
+            drawConstellation();
+
+        }
+    );
+
+
+/* =====================================================
+   RESET EVERYTHING
+===================================================== */
+
+document
+    .getElementById(
+        "reset-editor"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+
+            /*
+               Restore positions.
+            */
+
+            originalPositions.forEach(
+                original => {
+
+
+                    const student =
+                        students.find(
+                            item =>
+                                item.name ===
+                                original.name
+                        );
+
+
+                    if (student) {
+
+                        student.x =
+                            original.x;
+
+                        student.y =
+                            original.y;
+
+                    }
+
+                }
+            );
+
+
+            /*
+               Restore lines.
+            */
+
+            Object.keys(
+                originalLines
+            ).forEach(
+                month => {
+
+
+                    constellationLines[
+                        month
+                    ] =
+
+                        JSON.parse(
+                            JSON.stringify(
+                                originalLines[
+                                    month
+                                ]
+                            )
+                        );
+
+                }
+            );
+
+
+            drawConstellation();
+
+        }
+    );
+
+
+/* =====================================================
+   MONTH TABS
+===================================================== */
+
+function renderMonthTabs() {
+
+
+    monthTabs.innerHTML =
+        "";
+
+
+    const cycle =
+        cycles[
+            currentCycle
+        ];
+
+
+    cycle.months.forEach(
+        month => {
+
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "month-tab";
+
+
+            if (
+                month ===
+                currentMonth
+            ) {
+
+                button.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            button.textContent =
+                month;
+
+
+            button.addEventListener(
+                "click",
+                () => {
+
+
+                    currentMonth =
+                        month;
+
+
+                    renderMonthTabs();
+
+
+                    updateMonthTitle();
+
+
+                    drawConstellation();
+
+                }
+            );
+
+
+            monthTabs.appendChild(
+                button
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   MONTH TITLE
+===================================================== */
+
+function updateMonthTitle() {
+
+
+    if (
+        currentMonth ===
+        "June"
+    ) {
+
+        mapMonthTitle.textContent =
+            "June · Ursa Minor";
+
+    } else {
+
+        mapMonthTitle.textContent =
+            currentMonth;
+
+    }
+
+}
+
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+const modal =
+    document.getElementById(
+        "modal"
+    );
+
+
+function openProfile(
+    student
+) {
+
+
+    document.getElementById(
+        "profile-name"
+    ).textContent =
+        student.name;
+
+
+    document.getElementById(
+        "profile-rank"
+    ).textContent =
+
+        student.rank
+
+            ? `Rank #${String(
+                student.rank
+            ).padStart(
+                2,
+                "0"
+            )} · ${student.month} 2026`
+
+            : `Recorded Star · ${student.month} 2026`;
+
+
+    const portrait =
+        document.getElementById(
+            "portrait"
+        );
+
+
+    const image =
+        document.getElementById(
+            "portrait-image"
+        );
+
+
+    /*
+       =================================================
+       RANK 0
+       DATA ONLY — NO PHOTO
+       =================================================
+    */
+
+    if (
+        student.rank === 0
+    ) {
+
+
+        portrait.classList.remove(
+            "has-image"
+        );
+
+
+        image.removeAttribute(
+            "src"
+        );
+
+
+        document.getElementById(
+            "profile-info"
+        ).textContent =
+            student.identity;
+
+
+        document.getElementById(
+            "profile-quote"
+        ).textContent =
+            "";
+
+
+        modal.classList.add(
+            "active"
+        );
+
+
+        return;
+
+    }
+
+
+    /*
+       =================================================
+       RANK 1–3
+       PHOTO + DATA
+       =================================================
+    */
+
+    document.getElementById(
+        "profile-info"
+    ).textContent =
+        student.identity;
+
+
+    document.getElementById(
+        "profile-quote"
+    ).textContent =
+        `“${student.quote}”`;
+
+
+    portrait.classList.remove(
+        "has-image"
+    );
+
+
+    image.removeAttribute(
+        "src"
+    );
+
+
+    if (
+        student.photo
+    ) {
+
+
+        image.onload =
+            () => {
+
+                portrait.classList.add(
+                    "has-image"
+                );
+
+            };
+
+
+        image.onerror =
+            () => {
+
+                portrait.classList.remove(
+                    "has-image"
+                );
+
+            };
+
+
+        image.src =
+            student.photo;
+
+    }
+
+
+    modal.classList.add(
+        "active"
+    );
+
+}
+
+
+/* =====================================================
+   CLOSE MODAL
+===================================================== */
+
+document
+    .getElementById(
+        "close"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+
+            modal.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
+
+modal.addEventListener(
+    "click",
+    event => {
+
+
+        if (
+            event.target ===
+            modal
+        ) {
+
+            modal.classList.remove(
+                "active"
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   CYCLE NAVIGATION
+
+   Cycle moves SIX MONTHS at a time.
+
+   Month tabs only switch the month
+   INSIDE the current cycle.
+===================================================== */
+
+document
+    .getElementById(
+        "previous"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+
+            if (
+                currentCycle > 0
+            ) {
+
+
+                currentCycle--;
+
+
+                currentMonth =
+                    cycles[
+                        currentCycle
+                    ].months[0];
+
+
+                updateCycle();
+
+            }
+
+        }
+    );
+
+
+document
+    .getElementById(
+        "next"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+
+            if (
+                currentCycle <
+                cycles.length - 1
+            ) {
+
+
+                currentCycle++;
+
+
+                currentMonth =
+                    cycles[
+                        currentCycle
+                    ].months[0];
+
+
+                updateCycle();
+
+            }
+
+        }
+    );
+
 
 function updateCycle() {
 
+
     const cycle =
-        cycles[currentCycle];
+        cycles[
+            currentCycle
+        ];
 
 
     document.getElementById(
@@ -1375,265 +3562,46 @@ function updateCycle() {
         cycle.date;
 
 
-    /*
-       Cycle changes only every
-       six months.
-
-       Month tab remains inside
-       the current cycle.
-    */
-
-    if (
-        !cycle.months.includes(
-            currentMonth
-        )
-    ) {
-
-        currentMonth =
-            cycle.months[0];
-
-    }
-
-
     renderMonthTabs();
-    renderMonth();
 
-}
 
+    updateMonthTitle();
 
-/* =========================
-   PREVIOUS CYCLE
-========================= */
 
-document
-    .getElementById("previous")
-    .addEventListener(
-        "click",
-        () => {
-
-            if (currentCycle > 0) {
-
-                currentCycle--;
-
-                updateCycle();
-
-            }
-
-        }
-    );
-
-
-/* =========================
-   NEXT CYCLE
-========================= */
-
-document
-    .getElementById("next")
-    .addEventListener(
-        "click",
-        () => {
-
-            if (
-                currentCycle <
-                cycles.length - 1
-            ) {
-
-                currentCycle++;
-
-                updateCycle();
-
-            }
-
-        }
-    );
-
-
-/* =====================================================
-   PROFILE
-===================================================== */
-
-const modal =
-    document.getElementById("modal");
-
-const profile =
-    document.getElementById("profile");
-
-const portrait =
-    document.getElementById("portrait");
-
-
-function openProfile(student) {
-
-    /*
-       Reset profile mode first.
-    */
-
-    profile.classList.remove(
-        "data-only"
-    );
-
-
-    /* =========================
-       NAME
-    ========================= */
-
-    document.getElementById(
-        "profile-name"
-    ).textContent =
-        student.name;
-
-
-    /* =========================
-       RANK
-    ========================= */
-
-    document.getElementById(
-        "profile-rank"
-    ).textContent =
-
-        student.rank
-
-        ? `Rank #${String(student.rank).padStart(2, "0")} · ${student.month} 2026`
-
-        : `Recorded Star · ${student.month} 2026`;
-
-
-    /* =========================
-       RANK 0
-       DATA ONLY
-    ========================= */
-
-    if (student.rank === 0) {
-
-        profile.classList.add(
-            "data-only"
-        );
-
-
-        document.getElementById(
-            "profile-info"
-        ).innerHTML =
-
-            `${student.identity}`;
-
-
-        document.getElementById(
-            "profile-quote"
-        ).textContent = "";
-
-
-        portrait.innerHTML = "";
-
-
-        modal.classList.add(
-            "active"
-        );
-
-        return;
-
-    }
-
-
-    /* =========================
-       RANK 1–3
-       PHOTO PROFILE
-    ========================= */
-
-    if (student.photo) {
-
-        portrait.innerHTML = "";
-
-        const image =
-            document.createElement("img");
-
-        image.src =
-            student.photo;
-
-        image.alt =
-            student.name;
-
-        portrait.appendChild(
-            image
-        );
-
-    } else {
-
-        portrait.innerHTML =
-            "STUDENT PORTRAIT";
-
-    }
-
-
-    document.getElementById(
-        "profile-info"
-    ).innerHTML =
-
-        `Stellar Type:
-        <strong style="color:${stellarColors[student.type]}">
-            ${student.type}
-        </strong>
-        <br>
-
-        Surface temperature:
-        ${student.temperature}
-        <br>
-
-        ${student.identity}
-        <br>
-
-        Celestial Cycle I`;
-
-
-    document.getElementById(
-        "profile-quote"
-    ).textContent =
-
-        student.quote
-            ? `“${student.quote}”`
-            : "";
-
-
-    modal.classList.add(
-        "active"
-    );
+    drawConstellation();
 
 }
 
 
 /* =====================================================
-   CLOSE PROFILE
+   EXIT EDITOR
 ===================================================== */
 
 document
-    .getElementById("close")
+    .getElementById(
+        "exit-editor"
+    )
     .addEventListener(
         "click",
         () => {
 
-            modal.classList.remove(
-                "active"
+
+            const url =
+                new URL(
+                    window.location.href
+                );
+
+
+            url.searchParams.delete(
+                "edit"
             );
+
+
+            window.location.href =
+                url.toString();
 
         }
     );
-
-
-modal.addEventListener(
-    "click",
-    event => {
-
-        if (
-            event.target === modal
-        ) {
-
-            modal.classList.remove(
-                "active"
-            );
-
-        }
-
-    }
-);
 
 
 /* =====================================================
@@ -1642,7 +3610,9 @@ modal.addEventListener(
 
 updateCycle();
 
+
 </script>
 
 </body>
+
 </html>
