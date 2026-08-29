@@ -573,6 +573,95 @@ h1 {
 
 
 /* =====================================================
+   REFERENCE IMAGE GUIDE
+===================================================== */
+
+.reference-guide {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        1;
+
+    overflow:
+        hidden;
+
+    pointer-events:
+        none;
+
+    display:
+        none;
+}
+
+.reference-guide.active {
+
+    display:
+        block;
+}
+
+.reference-guide img {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    max-width:
+        none;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        contain;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    opacity:
+        0.45;
+
+    pointer-events:
+        none;
+
+    user-select:
+        none;
+}
+
+.reference-guide.editable {
+
+    pointer-events:
+        auto;
+
+    cursor:
+        move;
+}
+
+.reference-guide.editable img {
+
+    pointer-events:
+        auto;
+
+    cursor:
+        move;
+}
+
+
+/* =====================================================
    MONTH TITLE
 ===================================================== */
 
@@ -1174,6 +1263,164 @@ svg {
 
 
 /* =====================================================
+   REFERENCE GUIDE CONTROLS
+===================================================== */
+
+.guide-controls {
+
+    display:
+        none;
+
+    width:
+        min(
+            1100px,
+            94vw
+        );
+
+    margin:
+        8px auto 0;
+
+    padding:
+        12px 14px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.025
+        );
+
+    border-radius:
+        10px;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        12px;
+
+    flex-wrap:
+        wrap;
+}
+
+.guide-controls.active {
+
+    display:
+        flex;
+}
+
+.guide-group {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    flex-wrap:
+        wrap;
+}
+
+.guide-label {
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        1.5px;
+
+    opacity:
+        0.5;
+
+    text-transform:
+        uppercase;
+}
+
+.guide-upload {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+}
+
+.guide-upload input {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    opacity:
+        0;
+
+    cursor:
+        pointer;
+}
+
+.guide-opacity {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+}
+
+.guide-opacity input[type="range"] {
+
+    width:
+        130px;
+
+    accent-color:
+        #aaa4d8;
+
+    cursor:
+        pointer;
+}
+
+.guide-opacity-value {
+
+    width:
+        34px;
+
+    font-size:
+        8px;
+
+    opacity:
+        0.5;
+
+    text-align:
+        right;
+}
+
+
+/* =====================================================
    RESPONSIVE
 ===================================================== */
 
@@ -1205,7 +1452,7 @@ svg {
 
 }
 
-    .month-display {
+.month-display {
     text-align: center;
     margin-bottom: 12px;
 }
@@ -1332,6 +1579,18 @@ svg {
 
     <div class="map">
 
+        <!-- REFERENCE IMAGE GUIDE -->
+        <div
+            class="reference-guide"
+            id="reference-guide">
+
+            <img
+                id="reference-image"
+                alt="Constellation reference guide">
+
+        </div>
+
+
         <div
             class="map-month-title"
             id="map-month-title">
@@ -1426,6 +1685,85 @@ svg {
 
         </button>
 
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     REFERENCE GUIDE CONTROLS
+===================================================== -->
+
+<div
+    class="guide-controls"
+    id="guide-controls">
+
+
+    <div class="guide-group">
+
+        <div class="guide-label">
+            Reference Guide
+        </div>
+
+
+        <label
+            class="editor-button guide-upload">
+
+            UPLOAD IMAGE
+
+            <input
+                type="file"
+                id="reference-upload"
+                accept="image/*"
+            >
+
+        </label>
+
+
+        <button
+            class="editor-button"
+            id="toggle-guide">
+
+            SHOW GUIDE
+
+        </button>
+
+
+        <button
+            class="editor-button"
+            id="lock-guide">
+
+            🔒 LOCK GUIDE
+
+        </button>
+
+    </div>
+
+
+    <div class="guide-opacity">
+
+        <span class="guide-label">
+            Opacity
+        </span>
+
+
+        <input
+            type="range"
+            id="guide-opacity"
+            min="0"
+            max="100"
+            value="45"
+        >
+
+
+        <span
+            class="guide-opacity-value"
+            id="guide-opacity-value">
+
+            45%
+
+        </span>
 
     </div>
 
@@ -2025,6 +2363,78 @@ const profileQuote =
     );
 
 
+/* =====================================================
+   REFERENCE GUIDE DOM
+===================================================== */
+
+const guideControls =
+    document.getElementById(
+        "guide-controls"
+    );
+
+
+const referenceGuide =
+    document.getElementById(
+        "reference-guide"
+    );
+
+
+const referenceImage =
+    document.getElementById(
+        "reference-image"
+    );
+
+
+const referenceUpload =
+    document.getElementById(
+        "reference-upload"
+    );
+
+
+const toggleGuideButton =
+    document.getElementById(
+        "toggle-guide"
+    );
+
+
+const lockGuideButton =
+    document.getElementById(
+        "lock-guide"
+    );
+
+
+const guideOpacity =
+    document.getElementById(
+        "guide-opacity"
+    );
+
+
+const guideOpacityValue =
+    document.getElementById(
+        "guide-opacity-value"
+    );
+
+
+let guideVisible =
+    false;
+
+
+let guideLocked =
+    true;
+
+
+let guideX =
+    50;
+
+
+let guideY =
+    50;
+
+
+let guideObjectURL =
+    null;
+
+
 if (editMode) {
 
     document.body.classList.add(
@@ -2035,7 +2445,408 @@ if (editMode) {
         "active"
     );
 
+    guideControls.classList.add(
+        "active"
+    );
+
 }
+
+
+/* =====================================================
+   REFERENCE GUIDE
+===================================================== */
+
+function updateGuidePosition() {
+
+    referenceImage.style.left =
+        `${guideX}%`;
+
+    referenceImage.style.top =
+        `${guideY}%`;
+
+}
+
+
+function setGuideVisibility(
+    visible
+) {
+
+    guideVisible =
+        visible;
+
+
+    referenceGuide.classList.toggle(
+        "active",
+        guideVisible
+    );
+
+
+    toggleGuideButton.textContent =
+
+        guideVisible
+            ? "HIDE GUIDE"
+            : "SHOW GUIDE";
+
+
+    toggleGuideButton.classList.toggle(
+        "active",
+        guideVisible
+    );
+
+}
+
+
+function setGuideLock(
+    locked
+) {
+
+    guideLocked =
+        locked;
+
+
+    referenceGuide.classList.toggle(
+        "editable",
+        !guideLocked
+    );
+
+
+    lockGuideButton.textContent =
+
+        guideLocked
+            ? "🔒 LOCK GUIDE"
+            : "🔓 UNLOCK GUIDE";
+
+
+    lockGuideButton.classList.toggle(
+        "active",
+        !guideLocked
+    );
+
+}
+
+
+referenceUpload.addEventListener(
+    "change",
+    event => {
+
+        const file =
+            event.target.files[0];
+
+
+        if (!file) {
+
+            return;
+
+        }
+
+
+        if (
+            guideObjectURL
+        ) {
+
+            URL.revokeObjectURL(
+                guideObjectURL
+            );
+
+        }
+
+
+        guideObjectURL =
+            URL.createObjectURL(
+                file
+            );
+
+
+        referenceImage.src =
+            guideObjectURL;
+
+
+        guideX =
+            50;
+
+
+        guideY =
+            50;
+
+
+        updateGuidePosition();
+
+
+        setGuideVisibility(
+            true
+        );
+
+
+        setGuideLock(
+            false
+        );
+
+    }
+);
+
+
+toggleGuideButton.addEventListener(
+    "click",
+    () => {
+
+        if (
+            !referenceImage.src
+        ) {
+
+            alert(
+                "Upload a reference image first."
+            );
+
+            return;
+
+        }
+
+
+        setGuideVisibility(
+            !guideVisible
+        );
+
+    }
+);
+
+
+lockGuideButton.addEventListener(
+    "click",
+    () => {
+
+        if (
+            !referenceImage.src
+        ) {
+
+            alert(
+                "Upload a reference image first."
+            );
+
+            return;
+
+        }
+
+
+        setGuideLock(
+            !guideLocked
+        );
+
+    }
+);
+
+
+guideOpacity.addEventListener(
+    "input",
+    () => {
+
+        const value =
+            Number(
+                guideOpacity.value
+            );
+
+
+        referenceImage.style.opacity =
+            value / 100;
+
+
+        guideOpacityValue.textContent =
+            `${value}%`;
+
+    }
+);
+
+
+/* =====================================================
+   MOVE REFERENCE GUIDE
+===================================================== */
+
+let draggingGuide =
+    false;
+
+
+let guidePointerOffsetX =
+    0;
+
+
+let guidePointerOffsetY =
+    0;
+
+
+referenceGuide.addEventListener(
+    "pointerdown",
+    event => {
+
+        if (
+            guideLocked ||
+            !guideVisible
+        ) {
+
+            return;
+
+        }
+
+
+        if (
+            event.target !==
+            referenceImage
+        ) {
+
+            return;
+
+        }
+
+
+        event.preventDefault();
+
+
+        const rect =
+            referenceGuide.getBoundingClientRect();
+
+
+        const imageRect =
+            referenceImage.getBoundingClientRect();
+
+
+        guidePointerOffsetX =
+            event.clientX -
+            (
+                imageRect.left +
+                imageRect.width / 2
+            );
+
+
+        guidePointerOffsetY =
+            event.clientY -
+            (
+                imageRect.top +
+                imageRect.height / 2
+            );
+
+
+        draggingGuide =
+            true;
+
+
+        referenceImage.setPointerCapture(
+            event.pointerId
+        );
+
+    }
+);
+
+
+referenceImage.addEventListener(
+    "pointermove",
+    event => {
+
+        if (
+            !draggingGuide ||
+            guideLocked
+        ) {
+
+            return;
+
+        }
+
+
+        const rect =
+            referenceGuide.getBoundingClientRect();
+
+
+        const centerX =
+            event.clientX -
+            rect.left -
+            guidePointerOffsetX;
+
+
+        const centerY =
+            event.clientY -
+            rect.top -
+            guidePointerOffsetY;
+
+
+        guideX =
+            Math.max(
+                0,
+                Math.min(
+                    100,
+                    centerX /
+                    rect.width *
+                    100
+                )
+            );
+
+
+        guideY =
+            Math.max(
+                0,
+                Math.min(
+                    100,
+                    centerY /
+                    rect.height *
+                    100
+                )
+            );
+
+
+        updateGuidePosition();
+
+    }
+);
+
+
+referenceImage.addEventListener(
+    "pointerup",
+    event => {
+
+        draggingGuide =
+            false;
+
+
+        try {
+
+            referenceImage.releasePointerCapture(
+                event.pointerId
+            );
+
+        } catch (error) {}
+
+    }
+);
+
+
+referenceImage.addEventListener(
+    "pointercancel",
+    () => {
+
+        draggingGuide =
+            false;
+
+    }
+);
+
+
+/* =====================================================
+   INITIAL GUIDE STATE
+===================================================== */
+
+referenceImage.style.opacity =
+    Number(
+        guideOpacity.value
+    ) / 100;
+
+
+updateGuidePosition();
+
+
+setGuideVisibility(
+    false
+);
+
+
+setGuideLock(
+    true
+);
 
 
 /* =====================================================
@@ -3311,6 +4122,7 @@ function updateMonthTitle() {
         document.getElementById(
             "current-month"
         );
+
 
     const constellationDisplay =
         document.getElementById(
