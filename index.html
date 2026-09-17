@@ -816,10 +816,10 @@ svg {
         fixed;
 
     width:
-        270px;
+        300px;
 
     min-height:
-        120px;
+        0;
 
     padding:
         0;
@@ -957,6 +957,9 @@ svg {
 
 .star-profile-rank {
 
+    white-space:
+        nowrap;
+
     font-family:
         Arial,
         sans-serif;
@@ -1050,6 +1053,16 @@ svg {
 
     display:
         flex;
+
+    height:
+        120px;
+}
+
+.star-profile.has-photo .star-profile-quote,
+.star-profile.no-photo .star-profile-quote {
+
+    display:
+        none;
 }
 
 
@@ -1060,7 +1073,10 @@ svg {
 .star-profile.no-photo {
 
     width:
-        245px;
+        270px;
+
+    min-height:
+        0;
 }
 
 
@@ -1445,7 +1461,7 @@ svg {
 
         width:
             min(
-                270px,
+                300px,
                 82vw
             );
     }
@@ -1877,7 +1893,7 @@ const students = [
             "June",
 
         rank:
-            The Luminary,
+            1,
 
         type:
             "BLUE",
@@ -1907,7 +1923,7 @@ const students = [
             "June",
 
         rank:
-            The Luminous,
+            2,
 
         type:
             "ORANGE",
@@ -1937,7 +1953,7 @@ const students = [
             "June",
 
         rank:
-            The Radiant,
+            3,
 
         type:
             "RED",
@@ -2856,6 +2872,18 @@ setGuideLock(
 
 
 /* =====================================================
+   RANK TITLES
+===================================================== */
+
+const rankTitles = {
+    0: "The Observers",
+    1: "The Luminary",
+    2: "The Radiant",
+    3: "The Luminous"
+};
+
+
+/* =====================================================
    HOVER PROFILE
 ===================================================== */
 
@@ -2882,17 +2910,7 @@ function showProfile(
 
 
     profileRank.textContent =
-
-        student.rank
-
-            ? `Rank #${String(
-                student.rank
-            ).padStart(
-                2,
-                "0"
-            )} · ${student.month} 2026`
-
-            : `Recorded Star · ${student.month} 2026`;
+        `${rankTitles[student.rank] || "The Observers"} · ${student.month} 2026`;
 
 
     profileInfo.textContent =
@@ -2900,9 +2918,7 @@ function showProfile(
 
 
     profileQuote.textContent =
-        student.quote
-            ? `“${student.quote}”`
-            : "";
+        "";
 
 
     /*
