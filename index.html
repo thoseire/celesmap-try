@@ -1907,7 +1907,7 @@ const students = [
             "June",
 
         rank:
-            The Radiant,
+            The Luminous,
 
         type:
             "ORANGE",
@@ -1937,7 +1937,7 @@ const students = [
             "June",
 
         rank:
-            The Luminous,
+            The Radiant,
 
         type:
             "RED",
@@ -2892,7 +2892,7 @@ function showProfile(
                 "0"
             )} · ${student.month} 2026`
 
-            : `The Observers · ${student.month} 2026`;
+            : `Recorded Star · ${student.month} 2026`;
 
 
     profileInfo.textContent =
@@ -3259,11 +3259,11 @@ function drawConstellation() {
 
             const glowRadius =
 
-                student.rank === The Luminary
+                student.rank === 1
                     ? 19
-                    : student.rank === The Radiant
+                    : student.rank === 2
                     ? 15
-                    : student.rank === The Luminous
+                    : student.rank === 3
                     ? 13
                     : 8;
 
@@ -3304,11 +3304,11 @@ function drawConstellation() {
 
             const starRadius =
 
-                student.rank === The Luminary
+                student.rank === 1
                     ? 8
-                    : student.rank === The Radiant
+                    : student.rank === 2
                     ? 6.5
-                    : student.rank === The Luminous
+                    : student.rank === 3
                     ? 5.5
                     : 3.3;
 
