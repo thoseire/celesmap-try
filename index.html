@@ -2182,6 +2182,310 @@ const students = [
 
         y:
             134
+    },
+
+
+    /* =====================================================
+       JULY
+    ===================================================== */
+
+    {
+        name:
+            "Ryusarion Sinclair",
+
+        month:
+            "July",
+
+        rank:
+            1,
+
+        type:
+            "BLUE",
+
+        identity:
+            "",
+
+        photo:
+            "",
+
+        quote:
+            "",
+
+        x:
+            500,
+
+        y:
+            100
+    },
+
+
+    {
+        name:
+            "Mireilisse De Castellane",
+
+        month:
+            "July",
+
+        rank:
+            2,
+
+        type:
+            "ORANGE",
+
+        identity:
+            "",
+
+        photo:
+            "",
+
+        quote:
+            "",
+
+        x:
+            500,
+
+        y:
+            250
+    },
+
+
+    {
+        name:
+            "Naja Kusunoki",
+
+        month:
+            "July",
+
+        rank:
+            0,
+
+        type:
+            "WHITE",
+
+        identity:
+            "",
+
+        photo:
+            "",
+
+        quote:
+            "",
+
+        x:
+            360,
+
+        y:
+            190
+    },
+
+
+    {
+        name:
+            "Seraphina Marsh",
+
+        month:
+            "July",
+
+        rank:
+            0,
+
+        type:
+            "WHITE",
+
+        identity:
+            "",
+
+        photo:
+            "",
+
+        quote:
+            "",
+
+        x:
+            640,
+
+        y:
+            190
+    },
+
+
+    {
+        name:
+            "Soleil Nocturne",
+
+        month:
+            "July",
+
+        rank:
+            0,
+
+        type:
+            "WHITE",
+
+        identity:
+            "",
+
+        photo:
+            "",
+
+        quote:
+            "",
+
+        x:
+            355,
+
+        y:
+            335
+    },
+
+
+    {
+        name:
+            "Vangelyn Bloom",
+
+        month:
+            "July",
+
+        rank:
+            0,
+
+        type:
+            "WHITE",
+
+        identity:
+            "",
+
+        photo:
+            "",
+
+        quote:
+            "",
+
+        x:
+            645,
+
+        y:
+            335
+    },
+
+
+    {
+        name:
+            "Zachary Goth",
+
+        month:
+            "July",
+
+        rank:
+            0,
+
+        type:
+            "WHITE",
+
+        identity:
+            "",
+
+        photo:
+            "",
+
+        quote:
+            "",
+
+        x:
+            500,
+
+        y:
+            390
+    },
+
+
+    {
+        name:
+            "Catriona Morvane",
+
+        month:
+            "July",
+
+        rank:
+            0,
+
+        type:
+            "WHITE",
+
+        identity:
+            "",
+
+        photo:
+            "",
+
+        quote:
+            "",
+
+        x:
+            230,
+
+        y:
+            430
+    },
+
+
+    {
+        name:
+            "Lichelyn Mielle",
+
+        month:
+            "July",
+
+        rank:
+            0,
+
+        type:
+            "WHITE",
+
+        identity:
+            "",
+
+        photo:
+            "",
+
+        quote:
+            "",
+
+        x:
+            770,
+
+        y:
+            430
+    },
+
+
+    {
+        name:
+            "Desirée Hope",
+
+        month:
+            "July",
+
+        rank:
+            0,
+
+        type:
+            "WHITE",
+
+        identity:
+            "",
+
+        photo:
+            "",
+
+        quote:
+            "",
+
+        x:
+            500,
+
+        y:
+            480
     }
 
 ];
@@ -2251,6 +2555,55 @@ const constellationLines = {
           "Seraphina Marsh"
         ]
 
+    ],
+
+
+    July: [
+
+        [
+            "Ryusarion Sinclair",
+            "Mireilisse De Castellane"
+        ],
+
+        [
+            "Mireilisse De Castellane",
+            "Naja Kusunoki"
+        ],
+
+        [
+            "Mireilisse De Castellane",
+            "Seraphina Marsh"
+        ],
+
+        [
+            "Naja Kusunoki",
+            "Soleil Nocturne"
+        ],
+
+        [
+            "Seraphina Marsh",
+            "Vangelyn Bloom"
+        ],
+
+        [
+            "Soleil Nocturne",
+            "Catriona Morvane"
+        ],
+
+        [
+            "Vangelyn Bloom",
+            "Lichelyn Mielle"
+        ],
+
+        [
+            "Mireilisse De Castellane",
+            "Zachary Goth"
+        ],
+
+        [
+            "Zachary Goth",
+            "Desirée Hope"
+        ]
 
     ]
 
@@ -2275,6 +2628,9 @@ const originalPositions =
 
             name:
                 student.name,
+
+            month:
+                student.month,
 
             x:
                 student.x,
@@ -4014,7 +4370,9 @@ document
                         students.find(
                             item =>
                                 item.name ===
-                                original.name
+                                original.name &&
+                                item.month ===
+                                original.month
                         );
 
 
@@ -4194,6 +4552,11 @@ function updateMonthTitle() {
 
         mapMonthTitle.textContent =
             "Ursa Minor";
+	} else if (
+    currentMonth === "July"
+) {
+    mapMonthTitle.textContent =
+        "Apus";
 
     } else {
 
